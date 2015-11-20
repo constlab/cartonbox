@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Картонбокс</title>
+		<meta name="viewport" content="width=768">
+		<link rel="stylesheet" href="css/cartonbox.min.css">
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<div class="wrapper">
+			<h1>Картонбокс</h1>
+			<p>Джейквери-плагин для вывода фотографий, блоков с&nbsp;контентом и&nbsp;айфреймов в&nbsp;красивых модальных окнах, которые можно группировать, создавая, например, фото- или видео галереи.</p>
+			<p>Основное отличие от&nbsp;существующих подобных плагинов&nbsp;&mdash; правильная работа скролла на&nbsp;любых устройствах. При открытом модальном окне основное содержимое страницы, если оно имело полосу прокрутки, не&nbsp;прокручивается и&nbsp;никак не&nbsp;реагирует на&nbsp;изменение положения колеса мыши или на&nbsp;нажатие кнопок прокрутки на&nbsp;клавиатуре.</p>
+			<p>Внешний вид настраивается через ЦСС.</p>
+			<h2><a href="//github.com/imaxsof/cartonbox" target="_blank">Скачать с&nbsp;Гитхаба</a></h2>
+			<p class="gray">версия 1.3.1 от&nbsp;9 ноября 2015 года</p>
+			<h2>Быстрый старт</h2>
+			<p>Подключаем <em><a href="//jquery.com/">Джейквери</a></em> и&nbsp;<em>Картонбокс</em>:</p>
+			<div class="code">
+				<code>&lt;script src="<mark>jquery.min.js</mark>"&gt;&lt;/script&gt;</code>
+				<code>&lt;script src="<mark>jquery.cartonbox.min.js</mark>"&gt;&lt;/script&gt;</code>
+				<code>&lt;link rel="stylesheet" href="<mark>cartonbox.min.css</mark>"&gt;</code>
+			</div>
+			<p>Добавляем к&nbsp;ссылке класс, например, <code>.cartonbox</code> и,&nbsp;если это ссылка на&nbsp;картинку, параметр <code>data-cb-type="img"</code>:</p>
+			<div class="code">
+				<code>&lt;a href="image.jpg" <mark>class="cartonbox"</mark> <mark>data-cb-type="img"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>Либо если это ссылка на&nbsp;блок с&nbsp;контентом или сторонний сайт, то&nbsp;параметры <code>data-cb-type="inline"</code> и&nbsp;<code>data-cb-type="iframe"</code>, соответственно:</p>
+			<div class="code">
+				<code>&lt;a href="#text" class="cartonbox" <mark>data-cb-type="inline"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//apple.com/" class="cartonbox" <mark>data-cb-type="iframe"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>Для блока с&nbsp;контентом в&nbsp;теле ХТМЛ-страницы должен присутствовать элемент с&nbsp;<code>id="text"</code> (такой же&nbsp;как название ссылки без хештега) и&nbsp;содержимым, которое отобразится в&nbsp;модальном окне, например:</p>
+			<div class="code">
+				<code>&lt;div style="display: none;"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <mark>id="text"</mark>&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... ХТМЛ-код ...</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code>
+				<code>&lt;/div&gt;</code>
+			</div>
+			<p>Инициализация:</p>
+			<div class="code">
+				<code>$(function() {</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>$.cartonbox();</mark></code>
+				<code>});</code>
+			</div>
+			<p>На&nbsp;странице можно инициализировать любое количество модальных окон с&nbsp;разными параметрами.</p>
+			<h3>Группировка</h3>
+			<p>Чтобы модальные окна можно было листать, группе ссылок достаточно добавить параметр <code>data-cb-group="NAME"</code>, где значение <em>NAME</em> должно отличаться у&nbsp;разных групп.</p>
+			<p>Например, фотогалерею можно создать так:</p>
+			<div class="code">
+				<code>&lt;a href="image-1.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-2.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-3.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>Сгруппировать блоки с&nbsp;контентом так:</p>
+			<div class="code">
+				<code>&lt;a href="#text-1" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text-2" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text-3" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>Создать разнотипные модальные окна так:</p>
+			<div class="code">
+				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="qwerty"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="qwerty"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-group="qwerty"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>Перемещаться между окнами можно стрелками вправо-влево на&nbsp;клавиатуре, а&nbsp;закрыть окно&nbsp;— нажав клавишу Эскейп.</p>
+			<h3>Хеш-навигация</h3>
+			<p>Параметр <code>data-cb-hash</code> добавляет хеш к&nbsp;адресу веб-страницы. Открытие такой ссылки в&nbsp;браузере сразу приводит к&nbsp;запуску нужного модального окна. Например:</p>
+			<div class="code">
+				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-hash="picture"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" <mark>data-cb-hash="about"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-hash="website"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			<h2>Примеры</h2>
+			<h3>Фотографии</h3>
+			<div class="photo cf">
+				<a href="img/image-1.jpg" class="cartonbox" data-cb-type="img"><img src="img/image-1-small.jpg" alt="" width="151" height="100"></a>
+				<a href="img/image-2.jpg" class="cartonbox" data-cb-type="img" data-cb-caption="#caption"  data-cb-group="qwerty"><img src="img/image-2-small.jpg" alt="" width="151" height="100"></a>
+				<div style="display: none;">
+					<div id="caption">
+						<h2>Асфальт&nbsp;&mdash;</h2>
+						смесь <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D1%83%D0%BC" target="_blank">битумов</a> с&nbsp;минеральными материалами: гравием и&nbsp;песком (щебнем или гравием, песком и&nbsp;минеральным порошком в&nbsp;искусственном асфальте). Применяют для устройства покрытий на&nbsp;автомобильных дорогах, как кровельный, гидро- и&nbsp;электроизоляционный материал, для приготовления замазок, клеев, лаков и&nbsp;др. Асфальт наивысшего качества используется в&nbsp;живописи и&nbsp;при создании литографий.
+					</div>
+				</div>
+				<a href="img/image-3.jpg" class="cartonbox" data-cb-type="img"><img src="img/image-3-small.jpg" alt="" width="64" height="100"></a>
+				<a href="img/image-4.jpg" class="cartonbox" data-cb-type="img" data-cb-caption="Photo by David Goehring."><img src="img/image-4-small.jpg" alt="" width="100" height="100"></a>
+			</div>
+			<div class="code">
+				<code>&lt;a href="image-1.jpg" class="cartonbox" data-cb-type="img"&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-2.jpg" class="cartonbox" data-cb-type="img"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-caption="#caption"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+				<code>&lt;div style="display: none;"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="caption"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... ХТМЛ-код ...</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code>
+				<code>&lt;/div&gt;</code>
+				<code>&lt;a href="image-3.jpg" class="cartonbox" data-cb-type="img"&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-4.jpg" class="cartonbox" data-cb-type="img"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-caption="... Какой-то текст ..."</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>К&nbsp;любой фотографии можно делать подпись, добавив параметр <code>data-cb-caption</code>, содержащий либо айди блока, который нужно загрузить, либо какой-то обычный текст, который будет просто отображён.</p>
+			<h3>Фотогалерея</h3>
+			<div class="photo cf">
+				<a href="img/image-5.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"><img src="img/image-5-small.jpg" alt="" width="151" height="100"></a>
+				<a href="img/image-6.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"><img src="img/image-6-small.jpg" alt="" width="151" height="100"></a>
+				<a href="img/image-7.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"><img src="img/image-7-small.jpg" alt="" width="150" height="100"></a>
+				<a href="img/image-8.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery" data-cb-hash="picture" data-cb-caption="Photo by David Goehring."><img src="img/image-8-small.jpg" alt="" width="151" height="100"></a>
+			</div>
+			<div class="code">
+				<code>&lt;a href="image-1.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-2.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-3.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-4.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;data-cb-hash="picture"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;data-cb-caption="Photo by David Goehring."</code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			<h3>Блоки с&nbsp;контентом</h3>
+			<p>Простой <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">текстовый блок</a>.</p>
+			<p>Большая <a href="#article" class="cartonbox" data-cb-type="inline" data-cb-hash="article" data-cb-design="earth">статья</a> со&nbsp;множеством разнообразных элементов и&nbsp;уникальным оформлением.</p>
+			<div class="code">
+				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text"&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#article" class="cartonbox" data-cb-type="inline" data-cb-hash="article"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-design="earth"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+				<code>&lt;div style="display: none;"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="text"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... ХТМЛ-код ...</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div id="article"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... ХТМЛ-код ...</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code>
+				<code>&lt;/div&gt;</code>
+			</div>
+			<p>Каждое окно можно уникально оформить, добавив параметр <code>data-cb-design</code>, который, в&nbsp;свою очередь, добавляет заданный класс к&nbsp;родительскому блоку <code>.cartonbox-wrap</code>.</p>
+			<div style="display: none;">
+				<div id="text">
+					<h2>Космос&nbsp;&mdash;</h2>
+					относительно пустые участки <a href="#universe" class="cartonbox" data-cb-type="inline" data-cb-hash="universe">Вселенной</a>, которые лежат вне границ атмосфер небесных тел. Вопреки распространённым представлениям, космос не&nbsp;является абсолютно пустым пространством&nbsp;&mdash; в&nbsp;нём существует очень низкая плотность некоторых частиц (преимущественно водорода), а&nbsp;также электромагнитное излучение и&nbsp;межзвездное вещество. Слово &laquo;космос&raquo; имеет несколько различных значений. Иногда под космосом понимают всё пространство вне Земли, включая небесные тела.
+				</div>
+				<div id="universe">
+					<h2>Вселенная&nbsp;&mdash;</h2>
+					не&nbsp;имеющее строгого определения понятие в&nbsp;астрономии и&nbsp;философии. Оно делится на&nbsp;две принципиально отличающиеся сущности: умозрительную (философскую) и&nbsp;материальную, доступную наблюдениям в&nbsp;настоящее время или в&nbsp;обозримом будущем. Если автор различает эти сущности, то, следуя традиции, первую называют Вселенной, а&nbsp;вторую&nbsp;&mdash; астрономической Вселенной или Метагалактикой (в&nbsp;последнее время этот термин практически вышел из&nbsp;употребления). Вселенная является предметом исследования космологии.<br>
+					<br>
+					&larr; <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">Космос</a>
+				</div>
+				<div id="article">
+					<h2>Земля&nbsp;&mdash;</h2>
+					третья от&nbsp;Солнца планета. Пятая по&nbsp;размеру среди всех планет Солнечной системы. Она является также крупнейшей по&nbsp;диаметру, массе и&nbsp;плотности среди планет земной группы. Единственное известное человеку на&nbsp;данный момент тело Солнечной системы в&nbsp;частности и&nbsp;Вселенной вообще, населённое живыми организмами.<br>
+					<br>
+					<div style="background: url(img/pic-2.jpg) 50% 50% no-repeat; height: 350px;"></div><br>
+					Приблизительно&nbsp;70,8% поверхности планеты занимает Мировой океан, остальную часть поверхности занимают континенты и&nbsp;острова. На&nbsp;материках расположены реки, озёра, подземные воды и&nbsp;льды, вместе с&nbsp;Мировым океаном они составляют гидросферу. Жидкая вода, необходимая для всех известных жизненных форм, не&nbsp;существует на&nbsp;поверхности какой-либо из&nbsp;известных планет и&nbsp;планетоидов Солнечной системы, кроме Земли. Полюсы Земли покрыты ледяным панцирем, который включает в&nbsp;себя морской лёд Арктики и&nbsp;антарктический ледяной щит.<br>
+					<br>
+					<img src="img/pic-3.jpg" alt="" width="100%"><br>
+					<br>
+					Планета является домом для миллионов видов живых существ, включая человека. Территория Земли разделена на&nbsp;195 независимых государств, которые взаимодействуют между собой путём дипломатических отношений, путешествий, торговли или военных действий. Человеческая культура сформировала много представлений об&nbsp;устройстве мироздания&nbsp;&mdash; таких, как концепция о&nbsp;плоской Земле, геоцентрическая система мира и&nbsp;гипотеза Геи, по&nbsp;которой Земля представляет собой единый суперорганизм.<br>
+					<br>
+					<iframe src="//youtube.com/embed/6v2L2UGZJAM?rel=0&amp;showinfo=0&amp;wmode=transparent" width="520" height="293" frameborder="0" wmode="Opaque" allowfullscreen></iframe>
+				</div>
+			</div>
+			<h3>Айфрейм</h3>
+			<p><a href="//apple.com/" class="cartonbox" data-cb-type="iframe">Сайт американской корпорации «Эппл»</a>.</p>
+			<div class="code">
+				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"&gt;...&lt;/a&gt;</code>
+			</div>
+			<p>Так же&nbsp;можно загрузить фрагмент страницы, указав через пробел айди элемента, содаржимое которого нужно отобразить:</p>
+			<div class="code">
+				<code>&lt;a href="<mark>//apple.com/ #content</mark>" class="cartonbox" data-cb-type="iframe"&gt;...&lt;/a&gt;</code>
+			</div>
+			<h3>Видеогалерея</h3>
+			<div class="photo cf">
+				<a href="//youtube.com/embed/yRuGhX791FQ?rel=0&amp;showinfo=0&amp;autoplay=1&amp;wmode=transparent" class="cartonbox" data-cb-type="iframe" data-cb-group="video" data-cb-design="video16x9"><img src="img/video-1-small.jpg" alt="" width="178" height="100"></a>
+				<a href="//player.vimeo.com/video/79804777?autoplay=1&color=ffffff&title=0&byline=0&portrait=0" class="cartonbox" data-cb-type="iframe" data-cb-group="video" data-cb-design="video21x9"><img src="img/video-2-small.jpg" alt="" width="178" height="100"></a>
+				<a href="//vk.com/video_ext.php?oid=5713686&id=170265723&hash=5296394ecc50acbd&hd=2&autoplay=1" class="cartonbox" data-cb-type="iframe" data-cb-group="video" data-cb-design="video16x9" data-cb-hash="video" data-cb-caption="John Butler — Ocean"><img src="img/video-3-small.jpg" alt="" width="178" height="100"></a>
+			</div>
+			<div class="code">
+				<code>&lt;a href="//youtube.com/embed/yRuGhX791FQ?rel=0&amp;showinfo=0&amp;autoplay=1&amp;wmode=transparent"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;class="cartonbox" data-cb-type="iframe" data-cb-group="video" data-cb-design="video16x9"</code>
+				<code>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//player.vimeo.com/video/79804777?autoplay=1&color=ffffff&title=0&byline=0&portrait=0"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;class="cartonbox" data-cb-type="iframe" data-cb-group="video"  data-cb-design="video21x9"</code>
+				<code>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//vk.com/video_ext.php?oid=5713686&id=170265723&hash=5296394ecc50acbd&hd=2&autoplay=1"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;class="cartonbox" data-cb-type="iframe" data-cb-group="video"  data-cb-design="video16x9"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;data-cb-hash="video" data-cb-caption="John Butler — Ocean"</code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			<h2>Настройки</h2>
+			<div class="code">
+				<code>$(function() {</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;$.cartonbox({</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// Options</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'', <span class="gray">/* Селектор или DOM-элемент, который оборачиватся плагином.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;По&nbsp;умолчанию оборачивается всё, что идёт после тега <em>body</em>.<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Используйте эту опцию если после инициализации плагина<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ваш код работает неверно. */</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>source</mark>: 'cartonbox', <span class="gray">// Класс ссылки, содержащей вызов модального окна.</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, <span class="gray">// Скорость анимации в&nbsp;милисекундах.</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>false</em> отключает навигацию в&nbsp;виде точек.</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, <span class="gray">// <em>'true'</em> включает зацикливание групповых модальных окон.</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// Callback</span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartBefore</mark>:&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartAfter</mark>:&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLoadBefore</mark>:&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLoadAfter</mark>:&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowBefore</mark>:&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowNow</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowAfter</mark>:&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedBefore</mark>: function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedAfter</mark>:&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLeft</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onRight</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onError</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() { alert('Не удалось загрузить данные!'); }</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;});</code>
+				<code>});</code>
+			</div>
+			<h2>Поддержка браузерами</h2>
+			<p>Плагин проверялся и стабильно работает в последних версиях браузеров:</p>
+			<ul>
+				<li>на десктопе: Chrome, Firefox, Safari, Opera, Я.Браузер, IE (включая 10 версию);</li>
+				<li>на мобильных: Chrome, Safari, Opera Mini, Я.Браузер.</li>
+			</ul>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.cartonbox.min.js"></script>
+		<script>
+			$(function() {
+				$.cartonbox({
+					onStartBefore: function() {
+						$('body').addClass('cartonbox-zoom-start');
+					},
+					onShowNow: function() {
+						$('body').addClass('cartonbox-zoom-finish');
+					},
+					onShowAfter: function() {
+						$('body').removeClass('cartonbox-zoom-start cartonbox-zoom-finish');
+					},
+					onClosedBefore: function() {
+						$('body').addClass('cartonbox-up');
+					},
+					onClosedAfter: function() {
+						$('body').removeClass('cartonbox-up');
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
