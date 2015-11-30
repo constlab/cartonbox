@@ -1,7 +1,5 @@
-/* 
- * CartonBox 1.3.1 by Maxim Sofronov, maxsof.ru
- * With the support of Const Lab, constlab.ru
- * Project on GitHub: github.com/imaxsof/cartonbox
+/*
+ * CartonBox 1.3.2 by Const Lab, constlab.ru/portfolio/cartonbox/
  */
 
 (function($) {
@@ -11,7 +9,7 @@
 		// Настройки
 		var settings = $.extend({
 			// Options
-			wrap: '',
+			wrap: 'body',
 			source: 'cartonbox',
 			speed: 200,
 			nav: 'dotted',
@@ -29,14 +27,11 @@
 			onClosedAfter: function() {},
 			onLeft: function() {},
 			onRight: function() {},
-			onError: function() { alert('Не удалось загрузить данные!'); }
+			onError: function() { alert('Unable to load data!'); }
 		}, options);
 		
 		// Оборачиваем весь контент в блок
-		if (!$('.cartonbox-body').length) {
-			if (settings.wrap == '') $('body').wrapInner('<div class="cartonbox-body"></div>');
-			else $(settings.wrap).wrap('<div class="cartonbox-body"></div>');
-		}
+		if (!$('.cartonbox-body').length) $(settings.wrap).wrapInner('<div class="cartonbox-body"></div>');
 		
 		// Добовляем бэк
 		if (!$('.cartonbox-back').length) $('<div class="cartonbox-back"></div>').insertAfter('.cartonbox-body');
