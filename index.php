@@ -1,12 +1,14 @@
 <?
 
-if ($_GET['lang'] && $_GET['lang'] == 'en') $en = 1;
+if (isset($_GET['lang']) && $_GET['lang'] == 'en') $en = 1;
+elseif (isset($_GET['lang']) && $_GET['lang'] == 'ru') $en = 0;
 else {
 	$langs  = array('en', 'ru');
 	$lang   = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
 	$locale = substr($lang[0], 0, 2);
 	if (!in_array($locale, $langs)) $locale = $langs[0];
 	if ($locale == 'en') header('Location: ?lang=en');
+	$en = 0;
 }
 
 ?>
@@ -36,10 +38,10 @@ else {
 			
 			<? if (!$en): ?>
 				<h2><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Купить за&nbsp;$5 на&nbsp;Кодканьоне</a></h2>
-				<p class="gray">версия 1.3.2 от&nbsp;30 ноября 2015 года</p>
+				<p class="gray">версия 1.3.3 от&nbsp;4 декабря 2015 года</p>
 			<? else: ?>
 				<h2><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Buy $5&nbsp;CodeCanyon</a></h2>
-				<p class="gray">version 1.3.2 (11.30.2015)</p>
+				<p class="gray">version 1.3.3 (12.04.2015)</p>
 			<? endif; ?>
 			
 			<h2><?= (!$en ? 'Примеры' : 'Examples') ?></h2>

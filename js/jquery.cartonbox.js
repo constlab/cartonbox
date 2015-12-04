@@ -1,5 +1,5 @@
 /*
- * CartonBox 1.3.2 by Const Lab, constlab.ru/portfolio/cartonbox/
+ * CartonBox 1.3.3 by Const Lab, cartonbox.constlab.com
  */
 
 (function($) {
@@ -312,7 +312,7 @@
 				}
 				$('.cartonbox-content img').attr({'width': Math.ceil(cbImgW), 'height': Math.ceil(cbImgH)});
 				$('.cartonbox-wrap').css('width', cbImgW + cbWrapPaddingLR);
-			}
+			} else $('.cartonbox-wrap').css('width', '');
 			
 			// Caption
 			var cbCaption = cbThis.data('cb-caption');
