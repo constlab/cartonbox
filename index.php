@@ -38,10 +38,10 @@ else {
 			
 			<? if (!$en): ?>
 				<h2><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Купить за&nbsp;$5 на&nbsp;Кодканьоне</a></h2>
-				<p class="gray">версия 1.3.3 от&nbsp;4 декабря 2015 года</p>
+				<p class="gray">версия 1.4 от&nbsp;9 декабря 2015 года</p>
 			<? else: ?>
 				<h2><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Buy $5&nbsp;CodeCanyon</a></h2>
-				<p class="gray">version 1.3.3 (12.04.2015)</p>
+				<p class="gray">version 1.4 (12.09.2015)</p>
 			<? endif; ?>
 			
 			<h2><?= (!$en ? 'Примеры' : 'Examples') ?></h2>
@@ -327,6 +327,18 @@ else {
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
 			
+			<h3><?= (!$en ? 'Дополнительные опции' : 'Extra options') ?></h3>
+			<? if (!$en): ?>
+				<p>Через параметр <code>data-cb-options</code> можно передавать дополнительные опции. Например:</p>
+			<? else: ?>
+				<p>Through parameter <code>data-cb-options</code> you can transfer extra options.</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-options="{brand: 'ford', model: 'focus', generation: 3}"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			
 			<h2><?= (!$en ? 'Настройки' : 'Settings') ?></h2>
 			<div class="code">
 				<code>$(function() {</code>
@@ -398,6 +410,8 @@ else {
 					},
 					onShowAfter: function() {
 						$('body').removeClass('cartonbox-zoom-start cartonbox-zoom-finish');
+						// var opt = eval('(' + $('.cartonbox-wrap').attr('data-cb-options') + ')');
+						// if (typeof opt != 'undefined') console.log(opt.brand + ' ' + opt.model + ' ' + opt.generation);
 					},
 					onClosedBefore: function() {
 						$('body').addClass('cartonbox-up');
