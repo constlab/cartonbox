@@ -25,6 +25,10 @@ else {
 	<body>
 		<div class="wrapper">
 			
+			<span class="init">init</span>
+			<span class="reload">reload</span>
+			<span class="destroy">destroy</span>
+			
 			<h1><?= (!$en ? 'Картонбокс' : 'CartonBox') ?></h1>
 			<? if (!$en): ?>
 				<p>Джейквери-плагин для вывода фотографий, блоков с&nbsp;контентом и&nbsp;айфреймов в&nbsp;красивых модальных окнах, которые можно группировать, создавая, например, фото- или видео галереи.</p>
@@ -49,7 +53,7 @@ else {
 			<h3><?= (!$en ? 'Фотографии' : 'Photos') ?></h3>
 			<div class="photo cf">
 				<a href="img/image-1.jpg" class="cartonbox" data-cb-type="img"><img src="img/image-1-small.jpg" alt="" width="151" height="100"></a>
-				<a href="img/image-2.jpg" class="cartonbox" data-cb-type="img" data-cb-caption="#caption" data-cb-group="qwerty"><img src="img/image-2-small.jpg" alt="" width="151" height="100"></a>
+				<a href="img/image-2.jpg" class="cartonbox" data-cb-type="img" data-cb-caption="#caption"><img src="img/image-2-small.jpg" alt="" width="151" height="100"></a>
 				<div style="display: none;">
 					<div id="caption">
 						<h2><?= (!$en ? 'Асфальт&nbsp;&mdash;' : 'Asphalt&nbsp;') ?></h2>
@@ -228,9 +232,9 @@ else {
 				<code>&lt;link rel="stylesheet" href="<mark>cartonbox.min.css</mark>"&gt;</code>
 			</div>
 			<? if (!$en): ?>
-				<p>Добавляем к&nbsp;ссылке класс, например, <code>.cartonbox</code> и,&nbsp;если это ссылка на&nbsp;картинку, параметр <code>data-cb-type="img"</code>:</p>
+				<p>Добавляем к&nbsp;ссылке класс <code>.cartonbox</code> и,&nbsp;если это ссылка на&nbsp;картинку, параметр <code>data-cb-type="img"</code>:</p>
 			<? else: ?>
-				<p>Add class to&nbsp;a&nbsp;link, for example <code>.cartonbox</code>, and if&nbsp;the link is&nbsp;to&nbsp;a&nbsp;picture, parameter <code>data-cb-type="img"</code>:</p>
+				<p>Add class to&nbsp;a&nbsp;link <code>.cartonbox</code>, and if&nbsp;the link is&nbsp;to&nbsp;a&nbsp;picture, parameter <code>data-cb-type="img"</code>:</p>
 			<? endif; ?>
 			<div class="code">
 				<code>&lt;a href="image.jpg" <mark>class="cartonbox"</mark> <mark>data-cb-type="img"</mark>&gt;...&lt;/a&gt;</code>
@@ -341,38 +345,33 @@ else {
 			
 			<h2><?= (!$en ? 'Настройки' : 'Settings') ?></h2>
 			<div class="code">
-				<code>$(function() {</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;$.cartonbox({</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// Options</span></code>
-				<? if (!$en): ?>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', <span class="gray">// Селектор или DOM-элемент, содержимое которого оборачиватся плагином.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>source</mark>: 'cartonbox', <span class="gray">// Класс ссылки, содержащей вызов модального окна.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, <span class="gray">// Скорость анимации в&nbsp;милисекундах.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>false</em> отключает навигацию в&nbsp;виде точек.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, <span class="gray">// <em>'true'</em> включает зацикливание групповых модальных окон.</span></code>
-				<? else: ?>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', <span class="gray">// Selector or DOM-element, whose contents are wrapped plugin.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>source</mark>: 'cartonbox', <span class="gray">// Class references containing modal window call.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, <span class="gray">// Animation speed in milliseconds.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// Disables dotted-style navigation.</span></code>
-					<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, <span class="gray">// Enables cycling of grouped modal windows.</span></code>
-				<? endif; ?>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// Callback</span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartBefore</mark>:&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartAfter</mark>:&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLoadBefore</mark>:&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLoadAfter</mark>:&nbsp;&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowBefore</mark>:&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowNow</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowAfter</mark>:&nbsp;&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedBefore</mark>: function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedAfter</mark>:&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLeft</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onRight</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mark>onError</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() { alert('Unable to load data!'); }</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;});</code>
+				<code>$.cartonbox({</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Опции' : 'Options') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', <span class="gray">// <?= (!$en ? 'Селектор или DOM-элемент, содержимое которого оборачиватся плагином.' : 'Selector or&nbsp;DOM-element, whose contents are wrapped plugin.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, <span class="gray">// <?= (!$en ? 'Скорость анимации в&nbsp;милисекундах. Не&nbsp;забудьте поправить так&nbsp;же&nbsp;и&nbsp;в&nbsp;ЦСС.' : 'Animation speed in&nbsp;milliseconds.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>'false'</em> <?= (!$en ? 'отключает навигацию в&nbsp;виде точек.' : 'disables dotted-style navigation.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, <span class="gray">// <em>'true'</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Функции обратного вызова' : 'Callback') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartBefore</mark>:&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartAfter</mark>:&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLoadBefore</mark>:&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLoadAfter</mark>:&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowBefore</mark>:&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowNow</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onShowAfter</mark>:&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedBefore</mark>: function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedAfter</mark>:&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLeft</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onRight</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
 				<code>});</code>
 			</div>
+			
+			<h3><?= (!$en ? 'Методы' : 'Methods') ?></h3>
+			<div class="code">
+				<code><span class="gray">// <?= (!$en ? 'Перезагрузка' : 'Reload') ?></span></code>
+				<code>$.cartonbox(<mark>'reload'</mark>);</code>
+			</div>
+			
 			<h2><?= (!$en ? 'Поддержка браузерами' : 'Browser Support') ?></h2>
 			<? if (!$en): ?>
 				<p>Плагин проверялся и&nbsp;стабильно работает в&nbsp;последних версиях браузеров:</p>
@@ -387,6 +386,7 @@ else {
 					<li>mobile: Chrome, Safari, Opera Mini</li>
 				</ul>
 			<? endif; ?>
+			
 			<h2><?= (!$en ? 'Копирайты и&nbsp;лицензия' : 'Copyright and license') ?></h2>
 			<? if (!$en): ?>
 				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/" target="_blank">Конст Лаб</a>» и&nbsp;распространяется на&nbsp;платной основе.</p>
@@ -419,6 +419,20 @@ else {
 					onClosedAfter: function() {
 						$('body').removeClass('cartonbox-up');
 					}
+				});
+				
+				$('.init').on('click', function() {
+					$.cartonbox('init');
+				});
+				
+				$('.reload').on('click', function() {
+					$('[data-cb-hash="picture"]').removeAttr('data-cb-group');
+					console.log($('[data-cb-group="gallery"]').length);
+					$.cartonbox('reload');
+				});
+				
+				$('.destroy').on('click', function() {
+					$.cartonbox('destroy');
 				});
 			});
 		</script>
