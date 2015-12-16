@@ -1,20 +1,6 @@
 /*
- * CartonBox 1.4 by Const Lab, cartonbox.constlab.com
+ * CartonBox 1.5 by Const Lab, cartonbox.constlab.com
  */
-
-/* Body */
-
-.cartonbox-body {
-	-webkit-transition: -webkit-filter .1s;
-	transition: filter .1s;
-	}
-	
-	/* Cartonbox ON */
-	
-	.cartonbox-on {
-		-webkit-filter: blur(1px);
-		filter: blur(1px);
-		}
 
 /* Back */
 

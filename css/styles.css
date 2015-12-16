@@ -1,18 +1,11 @@
-/* ==========================================================================
-   CSS reset
-   ========================================================================== */
+/* CSS reset */
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;vertical-align:baseline;font:inherit;font-size:100%;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}table{border-spacing:0;border-collapse:collapse;}
 
-
-/* ==========================================================================
-   Site
-   ========================================================================== */
+/* Site */
 
 body {
 	background: #fff;
-	/*background-image: -webkit-linear-gradient(#4cffff 1px, transparent 1px, transparent 10px, #ccffff 10px, #ccffff 11px, transparent 11px);
-	background-size: 1px 20px;*/
 	color: #000;
 	font: 14px/20px Helvetica, Arial, sans-serif;
 	cursor: default;
@@ -111,16 +104,23 @@ body {
 		.dashed,
 		.cartonbox { border-bottom-style: dashed; }
 
-
-/* ==========================================================================
-   Content
-   ========================================================================== */
+/* Content */
 
 .wrapper {
 	width: 680px;
 	padding: 40px 40px 50px;
 	margin: auto;
 	}
+	
+	.lang {
+		float: right;
+		margin-top: 9px;
+		}
+	
+	.likely {
+		height: 22px;
+		margin: 40px -5px 10px;
+		}
 	
 	.code {
 		padding-bottom: 10px;
@@ -155,10 +155,17 @@ body {
 	
 	.gray { color: #999; }
 
+/* CartonBox Custom */
 
-/* ==========================================================================
-   CartonBox Custom
-   ========================================================================== */
+.cartonbox-body {
+	-webkit-transition: -webkit-filter .2s;
+	transition: filter .2s;
+	}
+	
+	.cartonbox-go {
+		-webkit-filter: blur(1px);
+		filter: blur(1px);
+		}
 
 .earth .cartonbox-container {
 	background: #000 url(../img/pic-1.jpg) repeat;
@@ -206,20 +213,12 @@ body {
 		transform: scale3d(1, 1, 1);
 		}
 
+/* Other */
 
-/* ==========================================================================
-   Other
-   ========================================================================== */
-
-.cf {
-	*zoom: expression(this.runtimeStyle.zoom="1", this.appendChild(document.createElement("br")).style.cssText="clear:both;font:0/0 serif");
-	*zoom: 1;
+.cf:before,
+.cf:after {
+	content: "";
+	display: table;
 	}
-	
-	.cf:before,
-	.cf:after {
-		content: "";
-		display: table;
-		}
-	
-	.cf:after { clear: both; }
+
+.cf:after { clear: both; }

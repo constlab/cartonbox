@@ -17,38 +17,161 @@ else {
 <html lang="<?= (!$en ? 'ru' : 'en') ?>">
 	<head>
 		<meta charset="utf-8">
-		<title><?= (!$en ? 'Картонбокс' : 'CartonBox') ?></title>
+		<title><?= (!$en ? 'Картонбокс: правильные модальные окна' : 'CartonBox: correct modal windows') ?></title>
 		<meta name="viewport" content="width=768">
 		<link rel="stylesheet" href="css/cartonbox.min.css">
+		<link rel="stylesheet" href="css/likely.css">
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body>
 		<div class="wrapper">
 			
-			<span class="init">init</span>
-			<span class="reload">reload</span>
-			<span class="destroy">destroy</span>
+			<div class="lang">
+				<? if (!$en): ?>
+					RU&nbsp; <a href="?lang=en">EN</a>
+				<? else: ?>
+					<a href="?lang=ru">RU</a> &nbsp;EN
+				<? endif; ?>
+			</div>
 			
 			<h1><?= (!$en ? 'Картонбокс' : 'CartonBox') ?></h1>
 			<? if (!$en): ?>
 				<p>Джейквери-плагин для вывода фотографий, блоков с&nbsp;контентом и&nbsp;айфреймов в&nbsp;красивых модальных окнах, которые можно группировать, создавая, например, фото- или видео галереи.</p>
 				<p>Основное отличие от&nbsp;существующих подобных плагинов&nbsp;&mdash; правильная работа скролла на&nbsp;любых устройствах. При открытом модальном окне основное содержимое страницы, если оно имело полосу прокрутки, не&nbsp;прокручивается и&nbsp;никак не&nbsp;реагирует на&nbsp;изменение положения колеса мыши или на&nbsp;нажатие кнопок прокрутки на&nbsp;клавиатуре.</p>
-				<p>Внешний вид настраивается через ЦСС.</p>
 			<? else: ?>
 				<p>jQuery-powered plugin that can display photos, videos and text blocks content in&nbsp;beautiful modal windows.</p>
 				<p>The main difference between existing similar plugins is&nbsp;correct scrolling on&nbsp;any device. Page body stay fixed till modal window opened and scrolled and does not react with mouse scroll and keyboard.</p>
-				<p>You can use CSS to&nbsp;layout appearance.</p>
 			<? endif; ?>
 			
 			<? if (!$en): ?>
-				<h2><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Купить за&nbsp;$5 на&nbsp;Кодканьоне</a></h2>
-				<p class="gray">версия 1.4 от&nbsp;9 декабря 2015 года</p>
+				<h2><a href="cartonbox-1.5.zip">Скачать архив</a></h2>
+				<p class="gray">Версия 1.5 от 15 декабря 2015 года</p>
 			<? else: ?>
-				<h2><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Buy $5&nbsp;CodeCanyon</a></h2>
-				<p class="gray">version 1.4 (12.09.2015)</p>
+				<h2><a href="cartonbox-1.5.zip">Download zip</a></h2>
+				<p class="gray">Version 1.5 (12.15.2015)</p>
 			<? endif; ?>
 			
-			<h2><?= (!$en ? 'Примеры' : 'Examples') ?></h2>
+			<h2><?= (!$en ? 'Быстрый старт' : 'Quick start') ?></h2>
+			<? if (!$en): ?>
+				<p>Подключаем <em><a href="//jquery.com/">Джейквери</a></em> и&nbsp;<em><a href="cartonbox-1.5.zip">Картонбокс</a></em>:</p>
+			<? else: ?>
+				<p>Setting up&nbsp;<em><a href="//jquery.com/">jQuery</a></em> and&nbsp;<em><a href="cartonbox-1.5.zip">CartonBox</a></em>:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;script src="<mark>jquery.min.js</mark>"&gt;&lt;/script&gt;</code>
+				<code>&lt;script src="<mark>jquery.cartonbox.min.js</mark>"&gt;&lt;/script&gt;</code>
+				<code>&lt;link rel="stylesheet" href="<mark>cartonbox.min.css</mark>"&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Добавляем к&nbsp;ссылке класс <code>.cartonbox</code> и,&nbsp;если это ссылка на&nbsp;картинку, параметр <code>data-cb-type="img"</code>:</p>
+			<? else: ?>
+				<p>Add class to&nbsp;a&nbsp;link <code>.cartonbox</code>, and if&nbsp;the link is&nbsp;to&nbsp;a&nbsp;picture, parameter <code>data-cb-type="img"</code>:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="image.jpg" <mark>class="cartonbox"</mark> <mark>data-cb-type="img"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Либо если это ссылка на&nbsp;блок с&nbsp;контентом или сторонний сайт, то&nbsp;параметры <code>data-cb-type="inline"</code> и&nbsp;<code>data-cb-type="iframe"</code>, соответственно:</p>
+			<? else: ?>
+				<p>If&nbsp;the link set to&nbsp;a&nbsp;content block or&nbsp;a&nbsp;third-party site, parameters <code>data-cb-type="inline"</code> and <code>data-cb-type="iframe"</code>, according to:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="#text" class="cartonbox" <mark>data-cb-type="inline"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//apple.com/" class="cartonbox" <mark>data-cb-type="iframe"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Для блока с&nbsp;контентом в&nbsp;теле ХТМЛ-страницы должен присутствовать элемент с&nbsp;<code>id="text"</code> (такой же&nbsp;как название ссылки без хештега) и&nbsp;содержимым, которое отобразится в&nbsp;модальном окне, например:</p>
+			<? else: ?>
+				<p>For a&nbsp;content block in&nbsp;the body of&nbsp;html-pages there should be&nbsp;an&nbsp;element with <code>id="text"</code> (the same as&nbsp;the name of&nbsp;the link without a&nbsp;hash tag) and the content that will be&nbsp;displayed in&nbsp;a&nbsp;modal window, for example:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;div style="display: none;"&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <mark>id="text"</mark>&gt;</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <?= (!$en ? 'ХТМЛ-код' : 'HTML code') ?> ...</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code>
+				<code>&lt;/div&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Инициализация:</p>
+			<? else: ?>
+				<p>Initialization:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>$(function() {</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>$.cartonbox();</mark></code>
+				<code>});</code>
+			</div>
+			
+			<h2><?= (!$en ? 'Параметры' : 'Parameters') ?></h2>
+			
+			<h3><?= (!$en ? 'Группировка' : 'Grouping') ?></h3>
+			<? if (!$en): ?>
+				<p>Чтобы модальные окна можно было листать, группе ссылок достаточно добавить параметр <code>data-cb-group="NAME"</code>, где значение <em>NAME</em> должно отличаться у&nbsp;разных групп.</p>
+				<p>Например, фотогалерею можно создать так:</p>
+			<? else: ?>
+				<p>To&nbsp;cycle thru modal windows, it&nbsp;is&nbsp;enough to&nbsp;add parameter <code>data-cb-group="NAME"</code> to&nbsp;a&nbsp;group of&nbsp;links, where the value of&nbsp;<em>NAME</em> should be&nbsp;different for different groups.</p>
+				<p>For example, you can create photo gallery this way:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="image-1.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-2.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="image-3.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Сгруппировать блоки с&nbsp;контентом так:</p>
+			<? else: ?>
+				<p>Group content blocks like this:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="#text-1" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text-2" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text-3" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Создать разнотипные модальные окна так:</p>
+			<? else: ?>
+				<p>Create different types of&nbsp;modal windows like this:</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="qwerty"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="qwerty"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-group="qwerty"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Перемещаться между окнами можно стрелками вправо-влево на&nbsp;клавиатуре, а&nbsp;закрыть окно&nbsp;— нажав клавишу Эскейп.</p>
+			<? else: ?>
+				<p>You can navigate between windows using the left and right arrows on&nbsp;the keyboard, and you can close the window by&nbsp;pushing Esc.</p>
+			<? endif; ?>
+			
+			<h3><?= (!$en ? 'Хеш-навигация' : 'Hash navigation') ?></h3>
+			<? if (!$en): ?>
+				<p>Параметр <code>data-cb-hash</code> добавляет хеш к&nbsp;адресу веб-страницы. Открытие такой ссылки в&nbsp;браузере сразу приводит к&nbsp;запуску нужного модального окна. Например:</p>
+			<? else: ?>
+				<p>Parameter <code>data-cb-hash="NAME"</code> adds a&nbsp;hash tag to&nbsp;a&nbsp;Web page address. Opening such a&nbsp;link in&nbsp;the browser leads to&nbsp;immediate launch of&nbsp;a&nbsp;desired modal window.</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-hash="picture"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" <mark>data-cb-hash="about"</mark>&gt;...&lt;/a&gt;</code>
+				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-hash="website"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			
+			<h3><?= (!$en ? 'Опции' : 'Options') ?></h3>
+			<? if (!$en): ?>
+				<p>Через параметр <code>data-cb-options</code> можно передавать дополнительные опции. Например:</p>
+			<? else: ?>
+				<p>Through parameter <code>data-cb-options</code> you can transfer extra options.</p>
+			<? endif; ?>
+			<div class="code">
+				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-options="{brand: 'ford', model: 'focus', generation: 3}"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
+			</div>
+			
+			<h2><?= (!$en ? 'Ещё параметры и примеры' : 'More parameters and examples') ?></h2>
 			
 			<h3><?= (!$en ? 'Фотографии' : 'Photos') ?></h3>
 			<div class="photo cf">
@@ -58,7 +181,7 @@ else {
 					<div id="caption">
 						<h2><?= (!$en ? 'Асфальт&nbsp;&mdash;' : 'Asphalt&nbsp;') ?></h2>
 						<? if (!$en): ?>
-							смесь <a href="//ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D1%83%D0%BC" target="_blank">битумов</a> с&nbsp;минеральными материалами: гравием и&nbsp;песком (щебнем или гравием, песком и&nbsp;минеральным порошком в&nbsp;искусственном асфальте). Применяют для устройства покрытий на&nbsp;автомобильных дорогах, как кровельный, гидро- и&nbsp;электроизоляционный материал, для приготовления замазок, клеев, лаков и&nbsp;др. Асфальт наивысшего качества используется в&nbsp;живописи и&nbsp;при создании литографий.
+							смесь <a href="//ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D1%83%D0%BC">битумов</a> с&nbsp;минеральными материалами: гравием и&nbsp;песком (щебнем или гравием, песком и&nbsp;минеральным порошком в&nbsp;искусственном асфальте). Применяют для устройства покрытий на&nbsp;автомобильных дорогах, как кровельный, гидро- и&nbsp;электроизоляционный материал, для приготовления замазок, клеев, лаков и&nbsp;др. Асфальт наивысшего качества используется в&nbsp;живописи и&nbsp;при создании литографий.
 						<? else: ?>
 							also known as&nbsp;bitumen, is&nbsp;a&nbsp;sticky, black and highly viscous liquid or&nbsp;semi-solid form of&nbsp;petroleum. It&nbsp;may be&nbsp;found in&nbsp;natural deposits or&nbsp;may be&nbsp;a&nbsp;refined product; it&nbsp;is&nbsp;a&nbsp;substance classed as&nbsp;a&nbsp;pitch. Until the 20th century, the term asphaltum was also used.
 						<? endif; ?>
@@ -128,9 +251,9 @@ else {
 				<code>&lt;/div&gt;</code>
 			</div>
 			<? if (!$en): ?>
-				<p>Каждое окно можно уникально оформить, добавив параметр <code>data-cb-design</code>, который, в&nbsp;свою очередь, добавляет заданный класс к&nbsp;родительскому блоку <code>.cartonbox-wrap</code>.</p>
+				<p>Каждое окно можно уникально оформить, добавив параметр <code>data-cb-design</code>.</p>
 			<? else: ?>
-				<p>You can style each window in&nbsp;a&nbsp;unique way by&nbsp;adding parameter <code>data-cb-design</code>, which, in&nbsp;turn, adds the specified class to&nbsp;the parent element <code>.cartonbox-wrap</code>.</p>
+				<p>You can style each window in&nbsp;a&nbsp;unique way by&nbsp;adding parameter <code>data-cb-design</code>.</p>
 			<? endif; ?>
 			<div style="display: none;">
 				<div id="text">
@@ -220,137 +343,14 @@ else {
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
 			
-			<h2><?= (!$en ? 'Быстрый старт' : 'Quick start') ?></h2>
-			<? if (!$en): ?>
-				<p>Подключаем <em><a href="//jquery.com/">Джейквери</a></em> и&nbsp;<em><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">Картонбокс</a></em>:</p>
-			<? else: ?>
-				<p>Setting up&nbsp;<em><a href="//jquery.com/">jQuery</a></em> and&nbsp;<em><a href="//codecanyon.net/item/cartonbox/?ref=constlab" target="_blank">CartonBox</a></em>:</p>
-			<? endif; ?>
+			<h2><?= (!$en ? 'Настройка' : 'Settings') ?></h2>
 			<div class="code">
-				<code>&lt;script src="<mark>jquery.min.js</mark>"&gt;&lt;/script&gt;</code>
-				<code>&lt;script src="<mark>jquery.cartonbox.min.js</mark>"&gt;&lt;/script&gt;</code>
-				<code>&lt;link rel="stylesheet" href="<mark>cartonbox.min.css</mark>"&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Добавляем к&nbsp;ссылке класс <code>.cartonbox</code> и,&nbsp;если это ссылка на&nbsp;картинку, параметр <code>data-cb-type="img"</code>:</p>
-			<? else: ?>
-				<p>Add class to&nbsp;a&nbsp;link <code>.cartonbox</code>, and if&nbsp;the link is&nbsp;to&nbsp;a&nbsp;picture, parameter <code>data-cb-type="img"</code>:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="image.jpg" <mark>class="cartonbox"</mark> <mark>data-cb-type="img"</mark>&gt;...&lt;/a&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Либо если это ссылка на&nbsp;блок с&nbsp;контентом или сторонний сайт, то&nbsp;параметры <code>data-cb-type="inline"</code> и&nbsp;<code>data-cb-type="iframe"</code>, соответственно:</p>
-			<? else: ?>
-				<p>If&nbsp;the link set to&nbsp;a&nbsp;content block or&nbsp;a&nbsp;third-party site, parameters <code>data-cb-type="inline"</code> and <code>data-cb-type="iframe"</code>, according to:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="#text" class="cartonbox" <mark>data-cb-type="inline"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="//apple.com/" class="cartonbox" <mark>data-cb-type="iframe"</mark>&gt;...&lt;/a&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Для блока с&nbsp;контентом в&nbsp;теле ХТМЛ-страницы должен присутствовать элемент с&nbsp;<code>id="text"</code> (такой же&nbsp;как название ссылки без хештега) и&nbsp;содержимым, которое отобразится в&nbsp;модальном окне, например:</p>
-			<? else: ?>
-				<p>For a&nbsp;content block in&nbsp;the body of&nbsp;html-pages there should be&nbsp;an&nbsp;element with <code>id="text"</code> (the same as&nbsp;the name of&nbsp;the link without a&nbsp;hash tag) and the content that will be&nbsp;displayed in&nbsp;a&nbsp;modal window, for example:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;div style="display: none;"&gt;</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <mark>id="text"</mark>&gt;</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;... <?= (!$en ? 'ХТМЛ-код' : 'HTML code') ?> ...</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</code>
-				<code>&lt;/div&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Инициализация:</p>
-			<? else: ?>
-				<p>Initialization:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>$(function() {</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>$.cartonbox();</mark></code>
-				<code>});</code>
-			</div>
-			<? if (!$en): ?>
-				<p>На&nbsp;странице можно инициализировать любое количество модальных окон с&nbsp;разными параметрами.</p>
-			<? else: ?>
-				<p>You can initialize any number of&nbsp;modal windows with different parameters on&nbsp;the page.</p>
-			<? endif; ?>
-			
-			<h3><?= (!$en ? 'Группировка' : 'Grouping') ?></h3>
-			<? if (!$en): ?>
-				<p>Чтобы модальные окна можно было листать, группе ссылок достаточно добавить параметр <code>data-cb-group="NAME"</code>, где значение <em>NAME</em> должно отличаться у&nbsp;разных групп.</p>
-				<p>Например, фотогалерею можно создать так:</p>
-			<? else: ?>
-				<p>To&nbsp;cycle thru modal windows, it&nbsp;is&nbsp;enough to&nbsp;add parameter <code>data-cb-group="NAME"</code> to&nbsp;a&nbsp;group of&nbsp;links, where the value of&nbsp;<em>NAME</em> should be&nbsp;different for different groups.</p>
-				<p>For example, you can create photo gallery this way:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="image-1.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="image-2.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="image-3.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="gallery"</mark>&gt;...&lt;/a&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Сгруппировать блоки с&nbsp;контентом так:</p>
-			<? else: ?>
-				<p>Group content blocks like this:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="#text-1" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="#text-2" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="#text-3" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="group"</mark>&gt;...&lt;/a&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Создать разнотипные модальные окна так:</p>
-			<? else: ?>
-				<p>Create different types of&nbsp;modal windows like this:</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-group="qwerty"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" <mark>data-cb-group="qwerty"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-group="qwerty"</mark></code>
-				<code>&gt;...&lt;/a&gt;</code>
-			</div>
-			<? if (!$en): ?>
-				<p>Перемещаться между окнами можно стрелками вправо-влево на&nbsp;клавиатуре, а&nbsp;закрыть окно&nbsp;— нажав клавишу Эскейп.</p>
-			<? else: ?>
-				<p>You can navigate between windows using the left and right arrows on&nbsp;the keyboard, and you can close the window by&nbsp;pushing Esc.</p>
-			<? endif; ?>
-			
-			<h3><?= (!$en ? 'Хеш-навигация' : 'Hash navigation') ?></h3>
-			<? if (!$en): ?>
-				<p>Параметр <code>data-cb-hash</code> добавляет хеш к&nbsp;адресу веб-страницы. Открытие такой ссылки в&nbsp;браузере сразу приводит к&nbsp;запуску нужного модального окна. Например:</p>
-			<? else: ?>
-				<p>Parameter <code>data-cb-hash="NAME"</code> adds a&nbsp;hash tag to&nbsp;a&nbsp;Web page address. Opening such a&nbsp;link in&nbsp;the browser leads to&nbsp;immediate launch of&nbsp;a&nbsp;desired modal window.</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img" <mark>data-cb-hash="picture"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="#text" class="cartonbox" data-cb-type="inline" <mark>data-cb-hash="about"</mark>&gt;...&lt;/a&gt;</code>
-				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-hash="website"</mark></code>
-				<code>&gt;...&lt;/a&gt;</code>
-			</div>
-			
-			<h3><?= (!$en ? 'Дополнительные опции' : 'Extra options') ?></h3>
-			<? if (!$en): ?>
-				<p>Через параметр <code>data-cb-options</code> можно передавать дополнительные опции. Например:</p>
-			<? else: ?>
-				<p>Through parameter <code>data-cb-options</code> you can transfer extra options.</p>
-			<? endif; ?>
-			<div class="code">
-				<code>&lt;a href="image.jpg" class="cartonbox" data-cb-type="img"</code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-options="{brand: 'ford', model: 'focus', generation: 3}"</mark></code>
-				<code>&gt;...&lt;/a&gt;</code>
-			</div>
-			
-			<h2><?= (!$en ? 'Настройки' : 'Settings') ?></h2>
-			<div class="code">
-				<code>$.cartonbox({</code>
+				<code>var options = {</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Опции' : 'Options') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', <span class="gray">// <?= (!$en ? 'Селектор или DOM-элемент, содержимое которого оборачиватся плагином.' : 'Selector or&nbsp;DOM-element, whose contents are wrapped plugin.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, <span class="gray">// <?= (!$en ? 'Скорость анимации в&nbsp;милисекундах. Не&nbsp;забудьте поправить так&nbsp;же&nbsp;и&nbsp;в&nbsp;ЦСС.' : 'Animation speed in&nbsp;milliseconds.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', &nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Селектор или DOM-элемент, содержимое которого оборачиватся плагином.' : 'Selector or&nbsp;DOM-element, whose contents are wrapped plugin.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Скорость анимации в&nbsp;милисекундах.' : 'Animation speed in&nbsp;milliseconds.') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>'false'</em> <?= (!$en ? 'отключает навигацию в&nbsp;виде точек.' : 'disables dotted-style navigation.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, <span class="gray">// <em>'true'</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, &nbsp;&nbsp;&nbsp;<span class="gray">// <em>'true'</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Функции обратного вызова' : 'Callback') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartBefore</mark>:&nbsp; function() {},</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartAfter</mark>:&nbsp;&nbsp; function() {},</code>
@@ -363,13 +363,33 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onClosedAfter</mark>:&nbsp; function() {},</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onLeft</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onRight</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
-				<code>});</code>
+				<code>};</code>
 			</div>
 			
 			<h3><?= (!$en ? 'Методы' : 'Methods') ?></h3>
+			<? if (!$en): ?>
+				<p>Инициализация. Пригодится если Картонбокс нужно запустить заново.</p>
+			<? else: ?>
+				<p>Initialization. It is useful if you want to start anew CartonBox.</p>
+			<? endif; ?>
 			<div class="code">
-				<code><span class="gray">// <?= (!$en ? 'Перезагрузка' : 'Reload') ?></span></code>
-				<code>$.cartonbox(<mark>'reload'</mark>);</code>
+				<code>$.cartonbox('<mark>init</mark>', [options]);</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Обновление. Нужно, например, если на&nbsp;странице динамически подгрузились новые элементы, которые необходимо открывать в&nbsp;модальном окне.</p>
+			<? else: ?>
+				<p>Refresh. It should, for example, if a page dynamically load the new items that you want to open in a modal window.</p>
+			<? endif; ?>
+			<div class="code">
+				<code>$.cartonbox('<mark>refresh</mark>');</code>
+			</div>
+			<? if (!$en): ?>
+				<p>Деинициализация. Полностью вычищает Картонбокс из&nbsp;кода.</p>
+			<? else: ?>
+				<p>Destroy. Completely clean CartonBox from code</p>
+			<? endif; ?>
+			<div class="code">
+				<code>$.cartonbox('<mark>destroy</mark>');</code>
 			</div>
 			
 			<h2><?= (!$en ? 'Поддержка браузерами' : 'Browser Support') ?></h2>
@@ -389,52 +409,23 @@ else {
 			
 			<h2><?= (!$en ? 'Копирайты и&nbsp;лицензия' : 'Copyright and license') ?></h2>
 			<? if (!$en): ?>
-				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/" target="_blank">Конст Лаб</a>» и&nbsp;распространяется на&nbsp;платной основе.</p>
-				<p>RU&nbsp; <a href="?lang=en">EN</a></p>
+				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/">Конст Лаб</a>» в&nbsp;2015&nbsp;году. Распространяется на&nbsp;беcплатной основе под лицензией MIT.</p>
 			<? else: ?>
-				<p>All credit goes to&nbsp;«<a href="//constlab.com/" target="_blank">Const Lab</a>» and distributed for a&nbsp;fee.</p>
-				<p><a href="?lang=ru">RU</a> &nbsp;EN</p>
+				<p>All credit goes to&nbsp;«<a href="//constlab.com/">Const Lab</a>» in&nbsp;2015. Distributed free of&nbsp;charge under MIT&nbsp;License.</p>
 			<? endif; ?>
+			
+			<div class="likely">
+				<div class="twitter">Твитнуть</div>
+				<div class="facebook">Поделиться</div>
+				<div class="vkontakte">Поделиться</div>
+				<div class="gplus">Плюсануть</div>
+			</div>
 			
 		</div>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.cartonbox.min.js"></script>
-		<script>
-			$(function() {
-				$.cartonbox({
-					onStartBefore: function() {
-						$('body').addClass('cartonbox-zoom-start');
-					},
-					onShowNow: function() {
-						$('body').addClass('cartonbox-zoom-finish');
-					},
-					onShowAfter: function() {
-						$('body').removeClass('cartonbox-zoom-start cartonbox-zoom-finish');
-						// var opt = eval('(' + $('.cartonbox-wrap').attr('data-cb-options') + ')');
-						// if (typeof opt != 'undefined') console.log(opt.brand + ' ' + opt.model + ' ' + opt.generation);
-					},
-					onClosedBefore: function() {
-						$('body').addClass('cartonbox-up');
-					},
-					onClosedAfter: function() {
-						$('body').removeClass('cartonbox-up');
-					}
-				});
-				
-				$('.init').on('click', function() {
-					$.cartonbox('init');
-				});
-				
-				$('.reload').on('click', function() {
-					$('[data-cb-hash="picture"]').removeAttr('data-cb-group');
-					console.log($('[data-cb-group="gallery"]').length);
-					$.cartonbox('reload');
-				});
-				
-				$('.destroy').on('click', function() {
-					$.cartonbox('destroy');
-				});
-			});
-		</script>
+		<script src="js/likely.js"></script>
+		<script src="js/custom.js"></script>
+		<script>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter34208800 = new Ya.Metrika({id:34208800, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script>
 	</body>
 </html>
