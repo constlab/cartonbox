@@ -37,7 +37,7 @@ else {
 			<h1><?= (!$en ? 'Картонбокс' : 'CartonBox') ?></h1>
 			<? if (!$en): ?>
 				<p>Джейквери-плагин для вывода фотографий, блоков с&nbsp;контентом и&nbsp;айфреймов в&nbsp;красивых модальных окнах, которые можно группировать, создавая, например, фото- или видео галереи.</p>
-				<p>Основное отличие от&nbsp;существующих подобных плагинов&nbsp;&mdash; правильная работа скролла на&nbsp;любых устройствах. При открытом модальном окне основное содержимое страницы, если оно имело полосу прокрутки, не&nbsp;прокручивается и&nbsp;никак не&nbsp;реагирует на&nbsp;изменение положения колеса мыши или на&nbsp;нажатие кнопок прокрутки на&nbsp;клавиатуре.</p>
+				<p>Основное отличие от&nbsp;существующих подобных плагинов&nbsp;&mdash; правильная работа скролла на&nbsp;любых устройствах. При открытом модальном окне основное содержимое страницы, если оно имело полосу прокрутки, не&nbsp;прокручивается и&nbsp;никак не&nbsp;реагирует на&nbsp;скролл колесом мыши или на&nbsp;нажатие кнопок прокрутки на&nbsp;клавиатуре.</p>
 			<? else: ?>
 				<p>jQuery-powered plugin that can display photos, videos and text blocks content in&nbsp;beautiful modal windows.</p>
 				<p>The main difference between existing similar plugins is&nbsp;correct scrolling on&nbsp;any device. Page body stay fixed till modal window opened and scrolled and does not react with mouse scroll and keyboard.</p>
