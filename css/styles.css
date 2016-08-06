@@ -10,6 +10,7 @@ body {
 	font: 14px/20px Helvetica, Arial, sans-serif;
 	cursor: default;
 	overflow-y: scroll;
+	overflow-x: hidden;
 	}
 	
 	h1 {
@@ -108,7 +109,7 @@ body {
 
 .wrapper {
 	width: 680px;
-	padding: 40px 40px 50px;
+	padding: 40px 40px 0;
 	margin: auto;
 	}
 	
@@ -116,6 +117,29 @@ body {
 		float: right;
 		margin-top: 9px;
 		}
+	
+	.feedback {
+		background: #f0f0f0;
+		position: relative;
+		margin: 45px 0 0;
+    	padding: 10px 0 45px;
+		}
+		
+		.feedback:before,
+		.feedback:after {
+			position: absolute;
+			content: "";
+			top: 0;
+			bottom: 0;
+			left: -3000px;
+			width: 3000px;
+			background: #f0f0f0;
+			}
+			
+			.feedback:after {
+				left: auto;
+				right: -3000px;
+				}
 	
 	.likely {
 		height: 22px;

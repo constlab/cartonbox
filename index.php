@@ -44,6 +44,26 @@ else {
 			<? endif; ?>
 			
 			<? if (!$en): ?>
+				<div class="likely">
+					<div class="twitter">Твитнуть</div>
+					<div class="facebook">Поделиться</div>
+					<div class="vkontakte">Поделиться</div>
+					<div class="gplus">Плюсануть</div>
+					<div class="telegram">Отправить</div>
+					<!--<div class="pinterest" data-media="i/pinnable.jpg">Запинить</div>-->
+				</div>
+			<? else: ?>
+				<div class="likely">
+					<div class="twitter">Tweet</div>
+					<div class="facebook">Share</div>
+					<div class="vkontakte">Share</div>
+					<div class="gplus">Plus</div>
+					<div class="telegram">Send</div>
+					<!--<div class="pinterest" data-media="i/pinnable.jpg">Pin</div>-->
+				</div>
+			<? endif; ?>
+			
+			<? if (!$en): ?>
 				<h2><a href="cartonbox-1.5.zip">Скачать архив</a></h2>
 				<p class="gray">Версия 1.5 от 15 декабря 2015 года</p>
 			<? else: ?>
@@ -409,16 +429,25 @@ else {
 			
 			<h2><?= (!$en ? 'Копирайты и&nbsp;лицензия' : 'Copyright and license') ?></h2>
 			<? if (!$en): ?>
-				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/">Конст Лаб</a>» в&nbsp;2015&nbsp;году. Распространяется на&nbsp;беcплатной основе под лицензией MIT.</p>
+				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/">Конст Лаб</a>» в&nbsp;2015&ndash;2016&nbsp;году. Распространяется на&nbsp;беcплатной основе под лицензией MIT.</p>
 			<? else: ?>
-				<p>All credit goes to&nbsp;«<a href="//constlab.com/">Const Lab</a>» in&nbsp;2015. Distributed free of&nbsp;charge under MIT&nbsp;License.</p>
+				<p>All credit goes to&nbsp;«<a href="//constlab.com/">Const Lab</a>» in&nbsp;2015&ndash;2016. Distributed free of&nbsp;charge under MIT&nbsp;License.</p>
 			<? endif; ?>
 			
-			<div class="likely">
-				<div class="twitter">Твитнуть</div>
-				<div class="facebook">Поделиться</div>
-				<div class="vkontakte">Поделиться</div>
-				<div class="gplus">Плюсануть</div>
+			<h2><?= (!$en ? 'Где используется' : 'Where used') ?></h2>
+			<? if (!$en): ?>
+				<p>Присылайте ссылки на&nbsp;ваши сайты в&nbsp;форме обратной связи, где вы&nbsp;используете Картонбокс и&nbsp;мы&nbsp;добавим их&nbsp;в&nbsp;список:</p>
+			<? else: ?>
+				<p>Send us&nbsp;links to&nbsp;your sites in&nbsp;a&nbsp;feedback form where you use CartonBox and we&nbsp;will add them to&nbsp;the list:</p>
+			<? endif; ?>
+			<ul>
+				<li><a href="//ratobor.com/arenda/costumes/" target="_blank">ratobor.ru/arenda/costumes/</a></li>
+				<li><a href="//constlab.ru/lab/" target="_blank">constlab.ru/lab/</a></li>
+			</ul>
+			
+			<div class="feedback">
+				<h2><?= (!$en ? 'Обратная связь' : 'Feedback') ?></h2>
+				<div id="disqus_thread"></div>
 			</div>
 			
 		</div>
@@ -426,6 +455,14 @@ else {
 		<script src="js/jquery.cartonbox.min.js"></script>
 		<script src="js/likely.js"></script>
 		<script src="js/custom.js"></script>
+		<script>
+			(function() {
+				var d = document, s = d.createElement('script');
+				s.src = '//cartonbox.disqus.com/embed.js';
+				s.setAttribute('data-timestamp', +new Date());
+				(d.head || d.body).appendChild(s);
+			})();
+		</script>
 		<script>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter34208800 = new Ya.Metrika({id:34208800, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true, trackHash:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script>
 	</body>
 </html>
