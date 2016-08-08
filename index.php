@@ -14,6 +14,7 @@ else {
 ?>
 
 <!doctype html>
+
 <html lang="<?= (!$en ? 'ru' : 'en') ?>">
 	<head>
 		<meta charset="utf-8">
@@ -23,6 +24,7 @@ else {
 		<link rel="stylesheet" href="css/likely.css">
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
+	
 	<body>
 		<div class="wrapper">
 			
@@ -201,9 +203,9 @@ else {
 					<div id="caption">
 						<h2><?= (!$en ? 'Асфальт&nbsp;&mdash;' : 'Asphalt&nbsp;') ?></h2>
 						<? if (!$en): ?>
-							смесь <a href="//ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D1%83%D0%BC">битумов</a> с&nbsp;минеральными материалами: гравием и&nbsp;песком (щебнем или гравием, песком и&nbsp;минеральным порошком в&nbsp;искусственном асфальте). Применяют для устройства покрытий на&nbsp;автомобильных дорогах, как кровельный, гидро- и&nbsp;электроизоляционный материал, для приготовления замазок, клеев, лаков и&nbsp;др. Асфальт наивысшего качества используется в&nbsp;живописи и&nbsp;при создании литографий.
+							<p style="padding-bottom: 0;">смесь <a href="//ru.wikipedia.org/wiki/%D0%91%D0%B8%D1%82%D1%83%D0%BC">битумов</a> с&nbsp;минеральными материалами: гравием и&nbsp;песком (щебнем или гравием, песком и&nbsp;минеральным порошком в&nbsp;искусственном асфальте). Применяют для устройства покрытий на&nbsp;автомобильных дорогах, как кровельный, гидро- и&nbsp;электроизоляционный материал, для приготовления замазок, клеев, лаков и&nbsp;др. Асфальт наивысшего качества используется в&nbsp;живописи и&nbsp;при создании литографий.</p>
 						<? else: ?>
-							also known as&nbsp;bitumen, is&nbsp;a&nbsp;sticky, black and highly viscous liquid or&nbsp;semi-solid form of&nbsp;petroleum. It&nbsp;may be&nbsp;found in&nbsp;natural deposits or&nbsp;may be&nbsp;a&nbsp;refined product; it&nbsp;is&nbsp;a&nbsp;substance classed as&nbsp;a&nbsp;pitch. Until the 20th century, the term asphaltum was also used.
+							<p style="padding-bottom: 0;">also known as&nbsp;bitumen, is&nbsp;a&nbsp;sticky, black and highly viscous liquid or&nbsp;semi-solid form of&nbsp;petroleum. It&nbsp;may be&nbsp;found in&nbsp;natural deposits or&nbsp;may be&nbsp;a&nbsp;refined product; it&nbsp;is&nbsp;a&nbsp;substance classed as&nbsp;a&nbsp;pitch. Until the 20th century, the term asphaltum was also used.</p>
 						<? endif; ?>
 					</div>
 				</div>
@@ -279,46 +281,46 @@ else {
 				<div id="text">
 					<h2><?= (!$en ? 'Космос&nbsp;&mdash;' : 'Cosmos&nbsp;&mdash;') ?></h2>
 					<? if (!$en): ?>
-						относительно пустые участки <a href="#universe" class="cartonbox" data-cb-type="inline" data-cb-hash="universe">Вселенной</a>, которые лежат вне границ атмосфер небесных тел. Вопреки распространённым представлениям, космос не&nbsp;является абсолютно пустым пространством&nbsp;&mdash; в&nbsp;нём существует очень низкая плотность некоторых частиц (преимущественно водорода), а&nbsp;также электромагнитное излучение и&nbsp;межзвездное вещество. Слово &laquo;космос&raquo; имеет несколько различных значений. Иногда под космосом понимают всё пространство вне Земли, включая небесные тела.
+						<p style="padding-bottom: 0;">относительно пустые участки <a href="#universe" class="cartonbox" data-cb-type="inline" data-cb-hash="universe">Вселенной</a>, которые лежат вне границ атмосфер небесных тел. Вопреки распространённым представлениям, космос не&nbsp;является абсолютно пустым пространством&nbsp;&mdash; в&nbsp;нём существует очень низкая плотность некоторых частиц (преимущественно водорода), а&nbsp;также электромагнитное излучение и&nbsp;межзвездное вещество. Слово &laquo;космос&raquo; имеет несколько различных значений. Иногда под космосом понимают всё пространство вне Земли, включая небесные тела.</p>
 					<? else: ?>
-						is&nbsp;the <a href="#universe" class="cartonbox" data-cb-type="inline" data-cb-hash="universe">universe</a> regarded as&nbsp;a&nbsp;complex and orderly system; the opposite of&nbsp;chaos. The philosopher Pythagoras used the term cosmos for the order of&nbsp;the universe, but the term was not part of&nbsp;modern language until the 19th century geographer and polymath, Alexander von Humboldt, resurrected the use of&nbsp;the word from the ancient Greek, assigned it&nbsp;to&nbsp;his multi-volume treatise, Kosmos, and, along the way, influenced our present and somewhat holistic perception of&nbsp;the universe as&nbsp;one interacting entity.
+						<p style="padding-bottom: 0;">is&nbsp;the <a href="#universe" class="cartonbox" data-cb-type="inline" data-cb-hash="universe">universe</a> regarded as&nbsp;a&nbsp;complex and orderly system; the opposite of&nbsp;chaos. The philosopher Pythagoras used the term cosmos for the order of&nbsp;the universe, but the term was not part of&nbsp;modern language until the 19th century geographer and polymath, Alexander von Humboldt, resurrected the use of&nbsp;the word from the ancient Greek, assigned it&nbsp;to&nbsp;his multi-volume treatise, Kosmos, and, along the way, influenced our present and somewhat holistic perception of&nbsp;the universe as&nbsp;one interacting entity.</p>
 					<? endif; ?>
 				</div>
 				<div id="universe">
 					<h2><?= (!$en ? 'Вселенная&nbsp;&mdash;' : 'Universe&nbsp;&mdash;') ?></h2>
 					<? if (!$en): ?>
-						не&nbsp;имеющее строгого определения понятие в&nbsp;астрономии и&nbsp;философии. Оно делится на&nbsp;две принципиально отличающиеся сущности: умозрительную (философскую) и&nbsp;материальную, доступную наблюдениям в&nbsp;настоящее время или в&nbsp;обозримом будущем. Если автор различает эти сущности, то, следуя традиции, первую называют Вселенной, а&nbsp;вторую&nbsp;&mdash; астрономической Вселенной или Метагалактикой (в&nbsp;последнее время этот термин практически вышел из&nbsp;употребления). Вселенная является предметом исследования космологии.<br>
+						<p style="padding-bottom: 0;">не&nbsp;имеющее строгого определения понятие в&nbsp;астрономии и&nbsp;философии. Оно делится на&nbsp;две принципиально отличающиеся сущности: умозрительную (философскую) и&nbsp;материальную, доступную наблюдениям в&nbsp;настоящее время или в&nbsp;обозримом будущем. Если автор различает эти сущности, то, следуя традиции, первую называют Вселенной, а&nbsp;вторую&nbsp;&mdash; астрономической Вселенной или Метагалактикой (в&nbsp;последнее время этот термин практически вышел из&nbsp;употребления). Вселенная является предметом исследования космологии.<br>
 						<br>
-						&larr; <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">Космос</a>
+						&larr; <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">Космос</a></p>
 					<? else: ?>
-						 is&nbsp;all of&nbsp;time and space and its contents. The Universe includes planets, stars, galaxies, the contents of&nbsp;intergalactic space, the smallest subatomic particles, and all matter and energy. The observable universe is&nbsp;about 28&nbsp;billion parsecs (91&nbsp;billion light-years) in&nbsp;diameter at&nbsp;the present time. The size of&nbsp;the whole Universe is&nbsp;not known and may be&nbsp;infinite.<br>
+						<p style="padding-bottom: 0;">is&nbsp;all of&nbsp;time and space and its contents. The Universe includes planets, stars, galaxies, the contents of&nbsp;intergalactic space, the smallest subatomic particles, and all matter and energy. The observable universe is&nbsp;about 28&nbsp;billion parsecs (91&nbsp;billion light-years) in&nbsp;diameter at&nbsp;the present time. The size of&nbsp;the whole Universe is&nbsp;not known and may be&nbsp;infinite.<br>
 						<br>
-						&larr; <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">Cosmos</a>
+						&larr; <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">Cosmos</a></p>
 					<? endif; ?>
 				</div>
 				<div id="article">
 					<h2><?= (!$en ? 'Земля&nbsp;&mdash;' : 'Earth&nbsp;&mdash;') ?></h2>
 					<? if (!$en): ?>
-						третья от&nbsp;Солнца планета. Пятая по&nbsp;размеру среди всех планет Солнечной системы. Она является также крупнейшей по&nbsp;диаметру, массе и&nbsp;плотности среди планет земной группы. Единственное известное человеку на&nbsp;данный момент тело Солнечной системы в&nbsp;частности и&nbsp;Вселенной вообще, населённое живыми организмами.
+						<p style="padding-bottom: 0;">третья от&nbsp;Солнца планета. Пятая по&nbsp;размеру среди всех планет Солнечной системы. Она является также крупнейшей по&nbsp;диаметру, массе и&nbsp;плотности среди планет земной группы. Единственное известное человеку на&nbsp;данный момент тело Солнечной системы в&nbsp;частности и&nbsp;Вселенной вообще, населённое живыми организмами.</p>
 					<? else: ?>
-						is&nbsp;the third planet from the Sun, the densest planet in&nbsp;the Solar System, the largest of&nbsp;the Solar System&rsquo;s four terrestrial planets, and the only astronomical object known to&nbsp;harbor life. The earliest life on&nbsp;Earth arose at&nbsp;least 3.5 billion years ago.
+						<p style="padding-bottom: 0;">is&nbsp;the third planet from the Sun, the densest planet in&nbsp;the Solar System, the largest of&nbsp;the Solar System&rsquo;s four terrestrial planets, and the only astronomical object known to&nbsp;harbor life. The earliest life on&nbsp;Earth arose at&nbsp;least 3.5 billion years ago.</p>
 					<? endif; ?>
 					<br>
 					<br>
 					<div style="background: url(img/pic-2.jpg) 50% 50% no-repeat; height: 350px;"></div><br>
 					<? if (!$en): ?>
-						Приблизительно&nbsp;70,8% поверхности планеты занимает Мировой океан, остальную часть поверхности занимают континенты и&nbsp;острова. На&nbsp;материках расположены реки, озёра, подземные воды и&nbsp;льды, вместе с&nbsp;Мировым океаном они составляют гидросферу. Жидкая вода, необходимая для всех известных жизненных форм, не&nbsp;существует на&nbsp;поверхности какой-либо из&nbsp;известных планет и&nbsp;планетоидов Солнечной системы, кроме Земли. Полюсы Земли покрыты ледяным панцирем, который включает в&nbsp;себя морской лёд Арктики и&nbsp;антарктический ледяной щит.
+						<p style="padding-bottom: 0;">Приблизительно&nbsp;70,8% поверхности планеты занимает Мировой океан, остальную часть поверхности занимают континенты и&nbsp;острова. На&nbsp;материках расположены реки, озёра, подземные воды и&nbsp;льды, вместе с&nbsp;Мировым океаном они составляют гидросферу. Жидкая вода, необходимая для всех известных жизненных форм, не&nbsp;существует на&nbsp;поверхности какой-либо из&nbsp;известных планет и&nbsp;планетоидов Солнечной системы, кроме Земли. Полюсы Земли покрыты ледяным панцирем, который включает в&nbsp;себя морской лёд Арктики и&nbsp;антарктический ледяной щит.</p>
 					<? else: ?>
-						According to&nbsp;evidence from radiometric dating and other sources, Earth was formed about 4.54 billion years ago. Within its first billion years, life appeared in&nbsp;its oceans and began to&nbsp;affect its atmosphere and surface, promoting the proliferation of&nbsp;aerobic as&nbsp;well as&nbsp;anaerobic organisms. Since then, the combination of&nbsp;Earth&rsquo;s distance from the Sun, its physical properties and its geological history have allowed life to&nbsp;thrive and evolve.
+						<p style="padding-bottom: 0;">According to&nbsp;evidence from radiometric dating and other sources, Earth was formed about 4.54 billion years ago. Within its first billion years, life appeared in&nbsp;its oceans and began to&nbsp;affect its atmosphere and surface, promoting the proliferation of&nbsp;aerobic as&nbsp;well as&nbsp;anaerobic organisms. Since then, the combination of&nbsp;Earth&rsquo;s distance from the Sun, its physical properties and its geological history have allowed life to&nbsp;thrive and evolve.</p>
 					<? endif; ?>
 					<br>
 					<br>
 					<img src="img/pic-3.jpg" alt="" width="100%"><br>
 					<br>
 					<? if (!$en): ?>
-						Планета является домом для миллионов видов живых существ, включая человека. Территория Земли разделена на&nbsp;195 независимых государств, которые взаимодействуют между собой путём дипломатических отношений, путешествий, торговли или военных действий. Человеческая культура сформировала много представлений об&nbsp;устройстве мироздания&nbsp;&mdash; таких, как концепция о&nbsp;плоской Земле, геоцентрическая система мира и&nbsp;гипотеза Геи, по&nbsp;которой Земля представляет собой единый суперорганизм.
+						<p style="padding-bottom: 0;">Планета является домом для миллионов видов живых существ, включая человека. Территория Земли разделена на&nbsp;195 независимых государств, которые взаимодействуют между собой путём дипломатических отношений, путешествий, торговли или военных действий. Человеческая культура сформировала много представлений об&nbsp;устройстве мироздания&nbsp;&mdash; таких, как концепция о&nbsp;плоской Земле, геоцентрическая система мира и&nbsp;гипотеза Геи, по&nbsp;которой Земля представляет собой единый суперорганизм.</p>
 					<? else: ?>
-						Earth gravitationally interacts with other objects in&nbsp;space, especially the Sun and the Moon. During one orbit around the Sun, Earth rotates about its own axis 366.26&nbsp;times, creating 365.26 solar days or&nbsp;one sidereal year. Earth&rsquo;s axis of&nbsp;rotation is&nbsp;tilted 23.4&deg; away from the perpendicular of&nbsp;its orbital plane, producing seasonal variations on&nbsp;the planet&rsquo;s surface with a&nbsp;period of&nbsp;one tropical year (365.24 solar days). The Moon is&nbsp;Earth&rsquo;s only permanent natural satellite. Its gravitational interaction with Earth causes ocean tides, stabilizes the orientation of&nbsp;Earth&rsquo;s rotational axis, and gradually slows Earth&rsquo;s rotational rate.
+						<p style="padding-bottom: 0;">Earth gravitationally interacts with other objects in&nbsp;space, especially the Sun and the Moon. During one orbit around the Sun, Earth rotates about its own axis 366.26&nbsp;times, creating 365.26 solar days or&nbsp;one sidereal year. Earth&rsquo;s axis of&nbsp;rotation is&nbsp;tilted 23.4&deg; away from the perpendicular of&nbsp;its orbital plane, producing seasonal variations on&nbsp;the planet&rsquo;s surface with a&nbsp;period of&nbsp;one tropical year (365.24 solar days). The Moon is&nbsp;Earth&rsquo;s only permanent natural satellite. Its gravitational interaction with Earth causes ocean tides, stabilizes the orientation of&nbsp;Earth&rsquo;s rotational axis, and gradually slows Earth&rsquo;s rotational rate.</p>
 					<? endif; ?>
 					<br>
 					<br>
