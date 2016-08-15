@@ -1,5 +1,5 @@
 /*
- * CartonBox 1.5 by Const Lab, cartonbox.constlab.com
+ * CartonBox 1.5.1 by Const Lab, cartonbox.constlab.com
  */
 
 (function($) {
@@ -170,8 +170,9 @@
 								var cbNavCaption = cbNavLink.attr('data-cb-caption');
 								var cbNavHash = cbNavLink.attr('data-cb-hash');
 								var cbNavDesign = cbNavLink.attr('data-cb-design');
+								var cbNavFragment = cbNavLink.attr('data-cb-fragment');
 								var cbNavOptions = cbNavLink.attr('data-cb-options');
-								cbNav = cbNav + '<li><a href="' + cbNavHref + '" class="cartonbox" data-cb-type="' + cbNavType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + i + '"' + (cbNavCaption && cbNavCaption !="" ? ' data-cb-caption="' + cbNavCaption + '"' : '') + '' + (cbNavHash && cbNavHash !="" ? ' data-cb-hash="' + cbNavHash + '"' : '') + '' + (cbNavDesign && cbNavDesign !="" ? ' data-cb-design="' + cbNavDesign + '"' : '') + '' + (cbNavOptions && cbNavOptions !="" ? ' data-cb-options="' + cbNavOptions + '"' : '') + '></a></li>';
+								cbNav = cbNav + '<li><a href="' + cbNavHref + '" class="cartonbox" data-cb-type="' + cbNavType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + i + '"' + (cbNavCaption && cbNavCaption !="" ? ' data-cb-caption="' + cbNavCaption + '"' : '') + '' + (cbNavHash && cbNavHash !="" ? ' data-cb-hash="' + cbNavHash + '"' : '') + '' + (cbNavDesign && cbNavDesign !="" ? ' data-cb-design="' + cbNavDesign + '"' : '') + '' + (cbNavOptions && cbNavOptions !="" ? ' data-cb-options="' + cbNavOptions + '"' : '') + '' + (cbNavFragment && cbNavFragment !="" ? ' data-cb-fragment="' + cbNavFragment + '"' : '') + '></a></li>';
 							}
 							$('.cartonbox-nav').html('<ul class="cartonbox-nav-dotted">' + cbNav + '</ul>');
 							$('.cartonbox-nav').show();
@@ -220,6 +221,9 @@
 				var cbDesign = cbThis.attr('data-cb-design');
 				if (cbDesign && cbDesign != '') $('.cartonbox-wrap').addClass(cbDesign);
 				
+				// Фрагмент
+				var cbFragment = cbThis.attr('data-cb-fragment');
+				
 				// Inline
 				if (cbType == 'inline') {
 					if ($(cbHref).length) {
@@ -233,7 +237,8 @@
 				
 				// Iframe
 				} else if (cbType == 'iframe') {
-					if (/ /.test(cbHref)) {
+					if (/ /.test(cbHref) || (cbFragment && cbFragment != '')) {
+						if (cbFragment) cbHref = cbHref + ' ' + cbFragment;
 						$('.cartonbox-content').load(cbHref, function() {
 							cbFuncPreload(cbThis);
 						});
@@ -268,7 +273,7 @@
 							cbImgArr.push(string);
 						}
 					}
-					if ($(this).is('img')) cbImgArr.push($(this).attr('src'));
+					if ($(this).is('img[src]')) cbImgArr.push($(this).attr('src'));
 					if ($(this).is('iframe')) cbIframeArr.push($(this));
 				});
 				
@@ -281,7 +286,7 @@
 					if (cbImgArr.length > 0) {
 						for (var i = 0; i < cbImgArr.length; i++) {
 							var cbNewImage = new Image();
-							$(cbNewImage).attr('src', cbImgArr[i]).on('error', function() {
+							$(cbNewImage).attr('src', (/^https:/.test(cbImgArr[i]) ? 'https:' : 'http:') + cbImgArr[i]).on('error', function() {
 								n++;
 								if (cbArrCount == n) cbFuncEndLoad(cbThis);
 								$.error('Unable to load data!');
@@ -380,8 +385,9 @@
 						var cbPrevCaption = cbPrev.attr('data-cb-caption');
 						var cbPrevHash = cbPrev.attr('data-cb-hash');
 						var cbPrevDesign = cbPrev.attr('data-cb-design');
+						var cbPrevFragment = cbPrev.attr('data-cb-fragment');
 						var cbPrevOptions = cbPrev.attr('data-cb-options');
-						$('.cartonbox-prev').html('<a href="' + cbPrevHref + '" class="cartonbox" data-cb-type="' + cbPrevType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbPrevIndex + '"' + (cbPrevCaption && cbPrevCaption !="" ? ' data-cb-caption="' + cbPrevCaption + '"' : '') + '' + (cbPrevHash && cbPrevHash !="" ? ' data-cb-hash="' + cbPrevHash + '"' : '') + '' + (cbPrevDesign && cbPrevDesign !="" ? ' data-cb-design="' + cbPrevDesign + '"' : '') + '' + (cbPrevOptions && cbPrevOptions !="" ? ' data-cb-options="' + cbPrevOptions + '"' : '') + '><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="23.7,54.3 24.6,53.7 1.5,26.5 24.6,1.3 23.7,0.7 0.3,26.5"></polygon></svg></a>');
+						$('.cartonbox-prev').html('<a href="' + cbPrevHref + '" class="cartonbox" data-cb-type="' + cbPrevType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbPrevIndex + '"' + (cbPrevCaption && cbPrevCaption !="" ? ' data-cb-caption="' + cbPrevCaption + '"' : '') + '' + (cbPrevHash && cbPrevHash !="" ? ' data-cb-hash="' + cbPrevHash + '"' : '') + '' + (cbPrevDesign && cbPrevDesign !="" ? ' data-cb-design="' + cbPrevDesign + '"' : '') + '' + (cbPrevOptions && cbPrevOptions !="" ? ' data-cb-options="' + cbPrevOptions + '"' : '') + '' + (cbPrevFragment && cbPrevFragment !="" ? ' data-cb-fragment="' + cbPrevFragment + '"' : '') + '><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="23.7,54.3 24.6,53.7 1.5,26.5 24.6,1.3 23.7,0.7 0.3,26.5"></polygon></svg></a>');
 						if ($('.cartonbox-wrap:visible').length) $('.cartonbox-prev').show();
 					} else $('.cartonbox-prev').html('').hide();
 					
@@ -398,8 +404,9 @@
 						var cbNextCaption = cbNext.attr('data-cb-caption');
 						var cbNextHash = cbNext.attr('data-cb-hash');
 						var cbNextDesign = cbNext.attr('data-cb-design');
+						var cbNextFragment = cbNext.attr('data-cb-fragment');
 						var cbNextOptions = cbNext.attr('data-cb-options');
-						$('.cartonbox-next').html('<a href="' + cbNextHref + '" class="cartonbox" data-cb-type="' + cbNextType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbNextIndex + '"' + (cbNextCaption && cbNextCaption !="" ? ' data-cb-caption="' + cbNextCaption + '"' : '') + '' + (cbNextHash && cbNextHash !="" ? ' data-cb-hash="' + cbNextHash + '"' : '') + '' + (cbNextDesign && cbNextDesign !="" ? ' data-cb-design="' + cbNextDesign + '"' : '') + '' + (cbNextOptions && cbNextOptions !="" ? ' data-cb-options="' + cbNextOptions + '"' : '') + '><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="1.4,54.3 0.6,53.7 23.1,26.5 0.6,1.3 1.4,0.7 24.3,26.5"></polygon></svg></a>');
+						$('.cartonbox-next').html('<a href="' + cbNextHref + '" class="cartonbox" data-cb-type="' + cbNextType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbNextIndex + '"' + (cbNextCaption && cbNextCaption !="" ? ' data-cb-caption="' + cbNextCaption + '"' : '') + '' + (cbNextHash && cbNextHash !="" ? ' data-cb-hash="' + cbNextHash + '"' : '') + '' + (cbNextDesign && cbNextDesign !="" ? ' data-cb-design="' + cbNextDesign + '"' : '') + '' + (cbNextOptions && cbNextOptions !="" ? ' data-cb-options="' + cbNextOptions + '"' : '') + '' + (cbNextFragment && cbNextFragment !="" ? ' data-cb-fragment="' + cbNextFragment + '"' : '') + '><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="1.4,54.3 0.6,53.7 23.1,26.5 0.6,1.3 1.4,0.7 24.3,26.5"></polygon></svg></a>');
 						if ($('.cartonbox-wrap:visible').length) $('.cartonbox-next').show();
 					} else $('.cartonbox-next').html('').hide();
 				}

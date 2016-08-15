@@ -66,11 +66,22 @@ else {
 			<? endif; ?>
 			
 			<? if (!$en): ?>
-				<h2><a href="cartonbox-1.5.zip">Скачать архив</a></h2>
-				<p class="gray">Версия 1.5 от 15 декабря 2015 года</p>
+				<h2><a href="cartonbox-1.5.1.zip">Скачать архив</a></h2>
+				<p>Версия&nbsp;1.5.1 от&nbsp;12 августа 2016&nbsp;года<!-- <span class="gray">&nbsp;&bull;&nbsp;</span> <span class="dashed">История изменений</span>--></p>
+				
+				<h2>История версий</h2>
+				<h3>1.5.1</h3>
+				<ul>
+					<li>Добавлен параметр <code>data-cb-fragment</code>;</li>
+					<li>Исправлена ошибка при которой не&nbsp;загружались картинки без указанного протокола при загрузке фрагмента страницы.</li>
+				</ul>
+				<h3>1.5</h3>
+				<ul>
+					<li>Первая стабильная версия.</li>
+				</ul>
 			<? else: ?>
-				<h2><a href="cartonbox-1.5.zip">Download zip</a></h2>
-				<p class="gray">Version 1.5 (12.15.2015)</p>
+				<h2><a href="cartonbox-1.5.1.zip">Download zip</a></h2>
+				<p class="gray">Version 1.5.1 (08.12.2016)</p>
 			<? endif; ?>
 			
 			<h2><?= (!$en ? 'Быстрый старт' : 'Quick start') ?></h2>
@@ -338,12 +349,20 @@ else {
 				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"&gt;...&lt;/a&gt;</code>
 			</div>
 			<? if (!$en): ?>
-				<p>Также можно загрузить фрагмент страницы, указав через пробел айди элемента, содержимое которого нужно отобразить:</p>
+				<p>Также можно загрузить фрагмент страницы, указав через пробел селектор элемента, содержимое которого нужно отобразить, либо добавив параметр <code>data-cb-fragment</code>:</p>
 			<? else: ?>
-				<p>You can also display a&nbsp;fragment of&nbsp;the page, specifying element ID&nbsp;whose contents you want to&nbsp;display, separated by&nbsp;space.</p>
+				<p>You can also display a&nbsp;fragment of&nbsp;the page, specifying element selector&nbsp;whose contents you want to&nbsp;display, separated by&nbsp;space, or&nbsp;adding a&nbsp;parameter <code>data-cb-fragment</code>:</p>
 			<? endif; ?>
 			<div class="code">
 				<code>&lt;a href="<mark>//apple.com/ #content</mark>" class="cartonbox" data-cb-type="iframe"&gt;...&lt;/a&gt;</code>
+				<? if (!$en): ?>
+					<code>// или</code>
+				<? else: ?>
+					<code>// or</code>
+				<? endif; ?>
+				<code>&lt;a href="//apple.com/" class="cartonbox" data-cb-type="iframe"</code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-fragment="#content"</mark></code>
+				<code>&gt;...&lt;/a&gt;</code>
 			</div>
 			
 			<h3><?= (!$en ? 'Видеогалерея' : 'Video') ?></h3>
@@ -371,8 +390,8 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Опции' : 'Options') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', &nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Селектор или DOM-элемент, содержимое которого оборачиватся плагином.' : 'Selector or&nbsp;DOM-element, whose contents are wrapped plugin.') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Скорость анимации в&nbsp;милисекундах.' : 'Animation speed in&nbsp;milliseconds.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>'false'</em> <?= (!$en ? 'отключает навигацию в&nbsp;виде точек.' : 'disables dotted-style navigation.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, &nbsp;&nbsp;&nbsp;<span class="gray">// <em>'true'</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>false</em> <?= (!$en ? 'отключает навигацию в&nbsp;виде точек.' : 'disables dotted-style navigation.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, &nbsp;&nbsp;&nbsp;<span class="gray">// <em>true</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Функции обратного вызова' : 'Callback') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartBefore</mark>:&nbsp; function() {},</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartAfter</mark>:&nbsp;&nbsp; function() {},</code>
@@ -431,7 +450,7 @@ else {
 			
 			<h2><?= (!$en ? 'Копирайты и&nbsp;лицензия' : 'Copyright and license') ?></h2>
 			<? if (!$en): ?>
-				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/">Конст Лаб</a>» в&nbsp;2015&ndash;2016&nbsp;году. Распространяется на&nbsp;беcплатной основе под лицензией MIT.</p>
+				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/">Конст Лаб</a>» в&nbsp;2015&ndash;2016&nbsp;годах. Распространяется на&nbsp;беcплатной основе под лицензией MIT.</p>
 			<? else: ?>
 				<p>All credit goes to&nbsp;«<a href="//constlab.com/">Const Lab</a>» in&nbsp;2015&ndash;2016. Distributed free of&nbsp;charge under MIT&nbsp;License.</p>
 			<? endif; ?>
