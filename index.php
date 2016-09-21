@@ -66,10 +66,14 @@ else {
 			<? endif; ?>
 			
 			<? if (!$en): ?>
-				<h2><a href="cartonbox-1.5.1.zip">Скачать архив</a></h2>
-				<p>Версия&nbsp;1.5.1 от&nbsp;12 августа 2016&nbsp;года<!-- <span class="gray">&nbsp;&bull;&nbsp;</span> <span class="dashed">История изменений</span>--></p>
+				<h2><a href="cartonbox-1.5.2.zip">Скачать архив</a></h2>
+				<p>Версия&nbsp;1.5.2 от&nbsp;21 сентября 2016&nbsp;года<!-- <span class="gray">&nbsp;&bull;&nbsp;</span> <span class="dashed">История изменений</span>--></p>
 				
 				<h2>История версий</h2>
+				<h3>1.5.2</h3>
+				<ul>
+					<li>Небольшие важные доработки стабильности.</li>
+				</ul>
 				<h3>1.5.1</h3>
 				<ul>
 					<li>Добавлен параметр <code>data-cb-fragment</code>;</li>
@@ -80,8 +84,8 @@ else {
 					<li>Первая стабильная версия.</li>
 				</ul>
 			<? else: ?>
-				<h2><a href="cartonbox-1.5.1.zip">Download zip</a></h2>
-				<p class="gray">Version 1.5.1 (08.12.2016)</p>
+				<h2><a href="cartonbox-1.5.2.zip">Download zip</a></h2>
+				<p class="gray">Version 1.5.2 (09.21.2016)</p>
 			<? endif; ?>
 			
 			<h2><?= (!$en ? 'Быстрый старт' : 'Quick start') ?></h2>

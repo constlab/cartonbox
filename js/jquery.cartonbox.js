@@ -1,5 +1,5 @@
 /*
- * CartonBox 1.5.1 by Const Lab, cartonbox.constlab.com
+ * CartonBox 1.5.2 by Const Lab, cartonbox.constlab.com
  */
 
 (function($) {
@@ -15,23 +15,26 @@
 			// Настройка
 			var settings = $.extend({
 				// Опции
-				wrap: 'body',
-				speed: 200,
-				nav: 'dotted',
-				cycle: false,
+				wrap:      'body',
+				speed:     200,
+				nav:       'dotted',
+				cycle:     false,
+				closeHtml: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><polygon points="24.4,1.4 23.6,0.6 12.5,11.8 1.4,0.6 0.6,1.4 11.8,12.5 0.6,23.6 1.4,24.4 12.5,13.2 23.6,24.4 24.4,23.6 13.2,12.5"></polygon></svg>',
+				prevHtml:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="23.7,54.3 24.6,53.7 1.5,26.5 24.6,1.3 23.7,0.7 0.3,26.5"></polygon></svg>',
+				nextHtml:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="1.4,54.3 0.6,53.7 23.1,26.5 0.6,1.3 1.4,0.7 24.3,26.5"></polygon></svg>',
 				
 				// Функции обратного вызова
-				onStartBefore: function() {},
-				onStartAfter: function() {},
-				onLoadBefore: function() {},
-				onLoadAfter: function() {},
-				onShowBefore: function() {},
-				onShowNow: function() {},
-				onShowAfter: function() {},
+				onStartBefore:  function() {},
+				onStartAfter:   function() {},
+				onLoadBefore:   function() {},
+				onLoadAfter:    function() {},
+				onShowBefore:   function() {},
+				onShowNow:      function() {},
+				onShowAfter:    function() {},
 				onClosedBefore: function() {},
-				onClosedAfter: function() {},
-				onLeft: function() {},
-				onRight: function() {}
+				onClosedAfter:  function() {},
+				onLeft:         function() {},
+				onRight:        function() {}
 			}, options);
 			
 			// Оборачиваем весь контент в блок
@@ -59,9 +62,7 @@
 						   '<div class="cartonbox-nav"></div>' +
 					   '</div>' +
 				  '</div>' + 
-				  '<div class="cartonbox-close">' +
-					   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><polygon points="24.4,1.4 23.6,0.6 12.5,11.8 1.4,0.6 0.6,1.4 11.8,12.5 0.6,23.6 1.4,24.4 12.5,13.2 23.6,24.4 24.4,23.6 13.2,12.5"></polygon></svg>' +
-				  '</div>' +
+				  '<div class="cartonbox-close">' + settings.closeHtml + '</div>' +
 				  '<div class="cartonbox-prev"></div>' +
 				  '<div class="cartonbox-next"></div>').insertAfter('.cartonbox-preloader');
 			}
@@ -286,7 +287,7 @@
 					if (cbImgArr.length > 0) {
 						for (var i = 0; i < cbImgArr.length; i++) {
 							var cbNewImage = new Image();
-							$(cbNewImage).attr('src', (/^https:/.test(cbImgArr[i]) ? 'https:' : 'http:') + cbImgArr[i]).on('error', function() {
+							$(cbNewImage).attr('src', (/^https:/.test(cbImgArr[i]) ? 'https:' : (/^http:/.test(cbImgArr[i]) ? 'http:' : '')) + cbImgArr[i].replace(/^http(s)?:/i, '')).on('error', function() {
 								n++;
 								if (cbArrCount == n) cbFuncEndLoad(cbThis);
 								$.error('Unable to load data!');
@@ -387,7 +388,7 @@
 						var cbPrevDesign = cbPrev.attr('data-cb-design');
 						var cbPrevFragment = cbPrev.attr('data-cb-fragment');
 						var cbPrevOptions = cbPrev.attr('data-cb-options');
-						$('.cartonbox-prev').html('<a href="' + cbPrevHref + '" class="cartonbox" data-cb-type="' + cbPrevType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbPrevIndex + '"' + (cbPrevCaption && cbPrevCaption !="" ? ' data-cb-caption="' + cbPrevCaption + '"' : '') + '' + (cbPrevHash && cbPrevHash !="" ? ' data-cb-hash="' + cbPrevHash + '"' : '') + '' + (cbPrevDesign && cbPrevDesign !="" ? ' data-cb-design="' + cbPrevDesign + '"' : '') + '' + (cbPrevOptions && cbPrevOptions !="" ? ' data-cb-options="' + cbPrevOptions + '"' : '') + '' + (cbPrevFragment && cbPrevFragment !="" ? ' data-cb-fragment="' + cbPrevFragment + '"' : '') + '><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="23.7,54.3 24.6,53.7 1.5,26.5 24.6,1.3 23.7,0.7 0.3,26.5"></polygon></svg></a>');
+						$('.cartonbox-prev').html('<a href="' + cbPrevHref + '" class="cartonbox" data-cb-type="' + cbPrevType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbPrevIndex + '"' + (cbPrevCaption && cbPrevCaption !="" ? ' data-cb-caption="' + cbPrevCaption + '"' : '') + '' + (cbPrevHash && cbPrevHash !="" ? ' data-cb-hash="' + cbPrevHash + '"' : '') + '' + (cbPrevDesign && cbPrevDesign !="" ? ' data-cb-design="' + cbPrevDesign + '"' : '') + '' + (cbPrevOptions && cbPrevOptions !="" ? ' data-cb-options="' + cbPrevOptions + '"' : '') + '' + (cbPrevFragment && cbPrevFragment !="" ? ' data-cb-fragment="' + cbPrevFragment + '"' : '') + '>' + settings.prevHtml + '</a>');
 						if ($('.cartonbox-wrap:visible').length) $('.cartonbox-prev').show();
 					} else $('.cartonbox-prev').html('').hide();
 					
@@ -406,7 +407,7 @@
 						var cbNextDesign = cbNext.attr('data-cb-design');
 						var cbNextFragment = cbNext.attr('data-cb-fragment');
 						var cbNextOptions = cbNext.attr('data-cb-options');
-						$('.cartonbox-next').html('<a href="' + cbNextHref + '" class="cartonbox" data-cb-type="' + cbNextType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbNextIndex + '"' + (cbNextCaption && cbNextCaption !="" ? ' data-cb-caption="' + cbNextCaption + '"' : '') + '' + (cbNextHash && cbNextHash !="" ? ' data-cb-hash="' + cbNextHash + '"' : '') + '' + (cbNextDesign && cbNextDesign !="" ? ' data-cb-design="' + cbNextDesign + '"' : '') + '' + (cbNextOptions && cbNextOptions !="" ? ' data-cb-options="' + cbNextOptions + '"' : '') + '' + (cbNextFragment && cbNextFragment !="" ? ' data-cb-fragment="' + cbNextFragment + '"' : '') + '><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 55"><polygon points="1.4,54.3 0.6,53.7 23.1,26.5 0.6,1.3 1.4,0.7 24.3,26.5"></polygon></svg></a>');
+						$('.cartonbox-next').html('<a href="' + cbNextHref + '" class="cartonbox" data-cb-type="' + cbNextType + '" data-cb-group="' + cbThis.attr('data-cb-group') + '" data-cb-group-index="' + cbNextIndex + '"' + (cbNextCaption && cbNextCaption !="" ? ' data-cb-caption="' + cbNextCaption + '"' : '') + '' + (cbNextHash && cbNextHash !="" ? ' data-cb-hash="' + cbNextHash + '"' : '') + '' + (cbNextDesign && cbNextDesign !="" ? ' data-cb-design="' + cbNextDesign + '"' : '') + '' + (cbNextOptions && cbNextOptions !="" ? ' data-cb-options="' + cbNextOptions + '"' : '') + '' + (cbNextFragment && cbNextFragment !="" ? ' data-cb-fragment="' + cbNextFragment + '"' : '') + '>' + settings.nextHtml + '</a>');
 						if ($('.cartonbox-wrap:visible').length) $('.cartonbox-next').show();
 					} else $('.cartonbox-next').html('').hide();
 				}
@@ -466,13 +467,13 @@
 		refresh: function() {
 			
 			// Удаляем индекс у групповых ссылок
-			$('.cartonbox').removeAttr('data-cb-group-index');
+			$('.cartonbox').not('.cartonbox-prev a, .cartonbox-next a, .cartonbox-nav a').removeAttr('data-cb-group-index');
 			
 			// Ищем групповые ссылки
 			// и добавляем индекс
-			$('.cartonbox').each(function() {
+			$('.cartonbox').not('.cartonbox-prev a, .cartonbox-next a, .cartonbox-nav a').each(function() {
 				if ($(this).attr('data-cb-group') && !$(this).attr('data-cb-group-index')) {
-					$('.cartonbox[data-cb-group=' +  $(this).attr('data-cb-group') + ']').each(function(i) {
+					$('.cartonbox[data-cb-group=' +  $(this).attr('data-cb-group') + ']').not('.cartonbox-prev a, .cartonbox-next a, .cartonbox-nav a').each(function(i) {
 						$(this).attr('data-cb-group-index', i);
 					});
 				}
