@@ -1,5 +1,5 @@
 /*
- * CartonBox 1.5.2 by Const Lab, cartonbox.constlab.com
+ * CartonBox 1.5.3 by Const Lab, cartonbox.constlab.com
  */
 
 /* Back */
@@ -33,15 +33,9 @@
 	border-bottom-color: rgba(255, 255, 255, 0);
 	border-left-color: rgba(255, 255, 255, 0);
 	margin: -13px 0 0 -13px;
-	-webkit-animation: preloader .5s infinite linear;
 	animation: preloader .5s infinite linear;
 	}
-	
-	@-webkit-keyframes preloader {
-		0% { -webkit-transform: rotate(0deg);  }
-		100% { -webkit-transform: rotate(360deg); }
-		}
-	
+
 	@keyframes preloader {
 		0% { transform: rotate(0deg); }
 		100% { transform: rotate(360deg); }
@@ -58,31 +52,32 @@
 	z-index: 10001;
 	position: relative;
 	}
-	
+
 	.cartonbox-flex {
 		min-height: 100vh;
 		box-sizing: border-box;
 		padding: 25px 0;
-		display: -webkit-flex;
+		display: -ms-flexbox;
 		display: flex;
-		-webkit-flex-direction: column;
-		flex-direction: column;
+		-ms-flex-direction: column;
+		    flex-direction: column;
 		}
-		
+
 		.cartonbox-item {
-			flex: 1 0 auto;
-			display: -webkit-flex;
+			-ms-flex: 1 0 auto;
+			    flex: 1 0 auto;
+			display: -ms-flexbox;
 			display: flex;
-			-webkit-justify-content: center;
-			justify-content: center;
-			-webkit-align-items: center;
-			align-items: center;
-			-webkit-align-content: center;
-			align-content: center;
+			-ms-flex-pack: center;
+			    justify-content: center;
+			-ms-flex-align: center;
+			    align-items: center;
+			-ms-flex-line-pack: center;
+			    align-content: center;
 			}
-	
+
 	/* Content */
-	
+
 	.cartonbox-container {
 		background: #fff;
 		padding: 45px 50px;
@@ -90,41 +85,41 @@
 		width: 100%;
 		box-sizing: border-box;
 		}
-		
+
 		/* Iframe */
-		
+
 		.cartonbox-iframe .cartonbox-container {
 			padding: 0;
 			line-height: 0;
 			}
-			
+
 			.cartonbox-iframe .cartonbox-container iframe {
 				width: 100%;
 				height: 500px;
 				}
-		
+
 		/* Img */
-		
+
 		.cartonbox-img .cartonbox-container {
 			padding: 0;
 			line-height: 0;
 			}
-		
+
 		/* Caption */
-		
+
 		.cartonbox-caption {
 			background: #FFF;
 			padding: 40px 50px;
 			}
-			
+
 			.cartonbox-caption-text {
 				line-height: 20px;
 				max-width: 520px;
 				margin: auto;
 				}
-	
+
 	/* Nav */
-	
+
 	.cartonbox-nav {
 		box-sizing: border-box;
 		height: 33px;
@@ -134,9 +129,9 @@
 		font-size: 0;
 		line-height: 0;
 		}
-		
+
 		/* Dotted */
-		
+
 		.cartonbox-nav-dotted {
 			display: inline-block;
 			margin: -5px 0 0;
@@ -144,7 +139,7 @@
 			text-align: center;
 			white-space: nowrap;
 			}
-			
+
 			.cartonbox-nav-dotted li {
 				margin: 0;
 				list-style: none;
@@ -152,7 +147,7 @@
 				padding: 5px;
 				position: relative;
 				}
-				
+
 				.cartonbox-nav-dotted a {
 					display: block;
 					box-sizing: border-box;
@@ -160,13 +155,12 @@
 					box-shadow: inset 0 0 0 1px #999;
 					width: 8px;
 					height: 8px;
-					-webkit-transition: .2s;
 					transition: .2s;
 					border: 0;
 					-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 					-webkit-tap-highlight-color: transparent;
 					}
-					
+
 					.cartonbox-nav-dotted a:before {
 						position: absolute;
 						content: "";
@@ -175,14 +169,14 @@
 						left: 0;
 						right: 0;
 						}
-					
+
 					.cartonbox-nav-dotted a:hover { box-shadow: inset 0 0 0 1px #fff; }
-					
+
 					.cartonbox-nav-dotted .active a {
 						box-shadow: inset 0 0 0 4px #fff;
 						cursor: default;
 						}
-	
+
 /* Close */
 
 .cartonbox-close {
@@ -199,18 +193,17 @@
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	-webkit-tap-highlight-color: transparent;
 	}
-	
+
 	.cartonbox-close svg {
 		width: 25px;
 		height: 25px;
 		display: block;
 		fill: #999;
-		-webkit-transition: .2s;
 		transition: .2s;
 		}
-		
+
 		.cartonbox-close:hover svg { fill: #fff; }
-	
+
 /* Arrows */
 
 .cartonbox-prev,
@@ -225,12 +218,12 @@
 	box-sizing: border-box;
 	display: none;
 	}
-	
+
 	.cartonbox-next {
 		left: auto;
 		right: 0;
 		}
-	
+
 	.cartonbox-prev a,
 	.cartonbox-next a {
 		position: absolute;
@@ -242,7 +235,7 @@
 		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 		-webkit-tap-highlight-color: transparent;
 		}
-		
+
 		.cartonbox-prev svg,
 		.cartonbox-next svg {
 			margin: -28px 25px 0;
@@ -254,9 +247,8 @@
 			top: 50%;
 			left: 0;
 			fill: #999;
-			-webkit-transition: .2s;
 			transition: .2s;
 			}
-			
+
 			.cartonbox-prev a:hover svg,
 			.cartonbox-next a:hover svg { fill: #fff; }

@@ -24,10 +24,10 @@ else {
 		<link rel="stylesheet" href="css/likely.css">
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
-	
+
 	<body>
 		<div class="wrapper">
-			
+
 			<div class="lang">
 				<? if (!$en): ?>
 					RU&nbsp; <a href="?lang=en">EN</a>
@@ -35,7 +35,7 @@ else {
 					<a href="?lang=ru">RU</a> &nbsp;EN
 				<? endif; ?>
 			</div>
-			
+
 			<h1><?= (!$en ? 'Картонбокс' : 'CartonBox') ?></h1>
 			<? if (!$en): ?>
 				<p>Джейквери-плагин для вывода фотографий, блоков с&nbsp;контентом и&nbsp;айфреймов в&nbsp;красивых модальных окнах, которые можно группировать, создавая, например, фото- или видео галереи.</p>
@@ -44,7 +44,7 @@ else {
 				<p>jQuery-powered plugin that can display photos, videos and text blocks content in&nbsp;beautiful modal windows.</p>
 				<p>The main difference between existing similar plugins is&nbsp;correct scrolling on&nbsp;any device. Page body stay fixed till modal window opened and scrolled and does not react with mouse scroll and keyboard.</p>
 			<? endif; ?>
-			
+
 			<? if (!$en): ?>
 				<div class="likely">
 					<div class="twitter">Твитнуть</div>
@@ -64,12 +64,20 @@ else {
 					<!--<div class="pinterest" data-media="i/pinnable.jpg">Pin</div>-->
 				</div>
 			<? endif; ?>
-			
+
 			<? if (!$en): ?>
-				<h2><a href="cartonbox-1.5.2.zip">Скачать архив</a></h2>
-				<p>Версия&nbsp;1.5.2 от&nbsp;21 сентября 2016&nbsp;года<!-- <span class="gray">&nbsp;&bull;&nbsp;</span> <span class="dashed">История изменений</span>--></p>
-				
+				<h2><a href="cartonbox-1.5.3.zip">Скачать архив</a></h2>
+				<p>Версия&nbsp;1.5.3 от&nbsp;18 октября 2016&nbsp;года<!-- <span class="gray">&nbsp;&bull;&nbsp;</span> <span class="dashed">История изменений</span>--></p>
+
 				<h2>История версий</h2>
+				<h3>1.5.3</h3>
+				<ul>
+					<li>Добавлен параметр <code>preload</code> в&nbsp;настройках, который регулирует предзагрузку данных в&nbsp;айфрейме;</li>
+					<li>Исправлена ошибка при которой модальное окно иногда не&nbsp;закрывалось при клике на&nbsp;иконку закрытия;</li>
+					<li>Групповые окна больше не&nbsp;переключаются при нажатии на&nbsp;стрелки клавиатуры вправо-влево если курсор находится в&nbsp;поле ввода формы в модальном окне;</li>
+					<li>Более точный пересчёт работы плагина при динамическом добавлении дополнительных ссылок на&nbsp;модальные окна;</li>
+					<li>Небольшие доработки стабильности.</li>
+				</ul>
 				<h3>1.5.2</h3>
 				<ul>
 					<li>Небольшие важные доработки стабильности.</li>
@@ -84,10 +92,10 @@ else {
 					<li>Первая стабильная версия.</li>
 				</ul>
 			<? else: ?>
-				<h2><a href="cartonbox-1.5.2.zip">Download zip</a></h2>
-				<p class="gray">Version 1.5.2 (09.21.2016)</p>
+				<h2><a href="cartonbox-1.5.3.zip">Download zip</a></h2>
+				<p class="gray">Version 1.5.3 (10.18.2016)</p>
 			<? endif; ?>
-			
+
 			<h2><?= (!$en ? 'Быстрый старт' : 'Quick start') ?></h2>
 			<? if (!$en): ?>
 				<p>Подключаем <em><a href="//jquery.com/">Джейквери</a></em> и&nbsp;<em><a href="cartonbox-1.5.zip">Картонбокс</a></em>:</p>
@@ -138,9 +146,9 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>$.cartonbox();</mark></code>
 				<code>});</code>
 			</div>
-			
+
 			<h2><?= (!$en ? 'Параметры' : 'Parameters') ?></h2>
-			
+
 			<h3><?= (!$en ? 'Группировка' : 'Grouping') ?></h3>
 			<? if (!$en): ?>
 				<p>Чтобы модальные окна можно было листать, группе ссылок достаточно добавить параметр <code>data-cb-group="NAME"</code>, где значение <em>NAME</em> должно отличаться у&nbsp;разных групп.</p>
@@ -181,7 +189,7 @@ else {
 			<? else: ?>
 				<p>You can navigate between windows using the left and right arrows on&nbsp;the keyboard, and you can close the window by&nbsp;pushing Esc.</p>
 			<? endif; ?>
-			
+
 			<h3><?= (!$en ? 'Хеш-навигация' : 'Hash navigation') ?></h3>
 			<? if (!$en): ?>
 				<p>Параметр <code>data-cb-hash</code> добавляет хеш к&nbsp;адресу веб-страницы. Открытие такой ссылки в&nbsp;браузере сразу приводит к&nbsp;запуску нужного модального окна. Например:</p>
@@ -195,7 +203,7 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-hash="website"</mark></code>
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
-			
+
 			<h3><?= (!$en ? 'Опции' : 'Options') ?></h3>
 			<? if (!$en): ?>
 				<p>Через параметр <code>data-cb-options</code> можно передавать дополнительные опции. Например:</p>
@@ -207,9 +215,9 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-options="{brand: 'ford', model: 'focus', generation: 3}"</mark></code>
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
-			
+
 			<h2><?= (!$en ? 'Ещё параметры и примеры' : 'More parameters and examples') ?></h2>
-			
+
 			<h3><?= (!$en ? 'Фотографии' : 'Photos') ?></h3>
 			<div class="photo cf">
 				<a href="img/image-1.jpg" class="cartonbox" data-cb-type="img"><img src="img/image-1-small.jpg" alt="" width="151" height="100"></a>
@@ -247,7 +255,7 @@ else {
 			<? else: ?>
 				<p>You can make a&nbsp;label for any picture by&nbsp;adding parameter <code>data-cb-caption</code>. The parameter that contains a&nbsp;block&nbsp;ID that you want to&nbsp;display, or&nbsp;some plain text that will be&nbsp;displayed.</p>
 			<? endif; ?>
-			
+
 			<h3><?= (!$en ? 'Фотогалерея' : 'Gallery') ?></h3>
 			<div class="photo cf">
 				<a href="img/image-5.jpg" class="cartonbox" data-cb-type="img" data-cb-group="gallery"><img src="img/image-5-small.jpg" alt="" width="151" height="100"></a>
@@ -264,7 +272,7 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;data-cb-caption="<?= (!$en ? 'Фотографии Девида Гёринга (David Goehring)' : 'Photo by&nbsp;David Goehring.') ?>"</code>
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
-			
+
 			<h3><?= (!$en ? 'Блоки с&nbsp;контентом' : 'Blocks of&nbsp;content') ?></h3>
 			<? if (!$en): ?>
 				<p>Простой <a href="#text" class="cartonbox" data-cb-type="inline" data-cb-hash="text">текстовый блок</a>.</p>
@@ -342,7 +350,7 @@ else {
 					<iframe src="//youtube.com/embed/6v2L2UGZJAM?rel=0&amp;showinfo=0&amp;wmode=transparent" width="520" height="293" frameborder="0" wmode="Opaque" allowfullscreen></iframe>
 				</div>
 			</div>
-			
+
 			<h3><?= (!$en ? 'Айфрейм' : 'Iframe') ?></h3>
 			<? if (!$en): ?>
 				<p><a href="//apple.com/" class="cartonbox" data-cb-type="iframe">Сайт американской корпорации «Эппл»</a>.</p>
@@ -368,7 +376,7 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>data-cb-fragment="#content"</mark></code>
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
-			
+
 			<h3><?= (!$en ? 'Видеогалерея' : 'Video') ?></h3>
 			<div class="photo cf">
 				<a href="//youtube.com/embed/yRuGhX791FQ?rel=0&amp;showinfo=0&amp;autoplay=1&amp;wmode=transparent" class="cartonbox" data-cb-type="iframe" data-cb-group="video" data-cb-design="video16x9"><img src="img/video-1-small.jpg" alt="" width="178" height="100"></a>
@@ -387,15 +395,16 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;data-cb-hash="video" data-cb-caption="John Butler — Ocean"</code>
 				<code>&gt;...&lt;/a&gt;</code>
 			</div>
-			
+
 			<h2><?= (!$en ? 'Настройка' : 'Settings') ?></h2>
 			<div class="code">
 				<code>var options = {</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Опции' : 'Options') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;'body', &nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Селектор или DOM-элемент, содержимое которого оборачиватся плагином.' : 'Selector or&nbsp;DOM-element, whose contents are wrapped plugin.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;200, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Скорость анимации в&nbsp;милисекундах.' : 'Animation speed in&nbsp;milliseconds.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>false</em> <?= (!$en ? 'отключает навигацию в&nbsp;виде точек.' : 'disables dotted-style navigation.') ?></span></code>
-				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;false, &nbsp;&nbsp;&nbsp;<span class="gray">// <em>true</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>wrap</mark>: &nbsp;&nbsp;&nbsp;'body', &nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Селектор или DOM-элемент, содержимое которого оборачиватся плагином.' : 'Selector or&nbsp;DOM-element, whose contents are wrapped plugin.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>speed</mark>: &nbsp;&nbsp;200, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Скорость анимации в&nbsp;милисекундах.' : 'Animation speed in&nbsp;milliseconds.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>nav</mark>: &nbsp;&nbsp;&nbsp;&nbsp;'dotted', <span class="gray">// <em>false</em> <?= (!$en ? 'отключает навигацию в&nbsp;виде точек.' : 'disables dotted-style navigation.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>cycle</mark>: &nbsp;&nbsp;false, &nbsp;&nbsp;&nbsp;<span class="gray">// <em>true</em> <?= (!$en ? 'включает зацикливание групповых модальных окон.' : 'enables cycling of&nbsp;grouped modal windows.') ?></span></code>
+				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>preload</mark>: true, &nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <em>false</em> <?= (!$en ? 'отключает предзагрузку контента в&nbsp;айфрейме.' : 'disables preloading content iframe.') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="gray">// <?= (!$en ? 'Функции обратного вызова' : 'Callback') ?></span></code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartBefore</mark>:&nbsp; function() {},</code>
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onStartAfter</mark>:&nbsp;&nbsp; function() {},</code>
@@ -410,7 +419,7 @@ else {
 				<code>&nbsp;&nbsp;&nbsp;&nbsp;<mark>onRight</mark>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function() {},</code>
 				<code>};</code>
 			</div>
-			
+
 			<h3><?= (!$en ? 'Методы' : 'Methods') ?></h3>
 			<? if (!$en): ?>
 				<p>Инициализация. Пригодится если Картонбокс нужно запустить заново.</p>
@@ -436,7 +445,7 @@ else {
 			<div class="code">
 				<code>$.cartonbox('<mark>destroy</mark>');</code>
 			</div>
-			
+
 			<h2><?= (!$en ? 'Поддержка браузерами' : 'Browser Support') ?></h2>
 			<? if (!$en): ?>
 				<p>Плагин проверялся и&nbsp;стабильно работает в&nbsp;последних версиях браузеров:</p>
@@ -451,14 +460,14 @@ else {
 					<li>mobile: Chrome, Safari, Opera Mini</li>
 				</ul>
 			<? endif; ?>
-			
+
 			<h2><?= (!$en ? 'Копирайты и&nbsp;лицензия' : 'Copyright and license') ?></h2>
 			<? if (!$en): ?>
 				<p>Плагин написан разработчиками дизайн-лаборатории «<a href="//constlab.ru/">Конст Лаб</a>» в&nbsp;2015&ndash;2016&nbsp;годах. Распространяется на&nbsp;беcплатной основе под лицензией MIT.</p>
 			<? else: ?>
 				<p>All credit goes to&nbsp;«<a href="//constlab.com/">Const Lab</a>» in&nbsp;2015&ndash;2016. Distributed free of&nbsp;charge under MIT&nbsp;License.</p>
 			<? endif; ?>
-			
+
 			<h2><?= (!$en ? 'Где используется' : 'Where used') ?></h2>
 			<? if (!$en): ?>
 				<p>Присылайте ссылки на&nbsp;ваши сайты в&nbsp;форме обратной связи, где вы&nbsp;используете Картонбокс и&nbsp;мы&nbsp;добавим их&nbsp;в&nbsp;список:</p>
@@ -468,13 +477,14 @@ else {
 			<ul>
 				<li><a href="//ratobor.com/arenda/costumes/" target="_blank">ratobor.ru/arenda/costumes/</a></li>
 				<li><a href="//constlab.ru/lab/" target="_blank">constlab.ru/lab/</a></li>
+				<li><a href="//365dayz.ru/search/daily/" target="_blank">365dayz.ru/search/daily/</a></li>
 			</ul>
-			
+
 			<div class="feedback">
 				<h2><?= (!$en ? 'Обратная связь' : 'Feedback') ?></h2>
 				<div id="disqus_thread"></div>
 			</div>
-			
+
 		</div>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.cartonbox.min.js"></script>
