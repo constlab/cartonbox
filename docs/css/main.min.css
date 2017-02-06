@@ -1,0 +1,240 @@
+body {
+	background: #fff;
+	color: #000;
+	font: 14px/20px Helvetica, Arial, sans-serif;
+	cursor: default;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	max-height: 99999px;
+}
+h1 {
+	font-size: 50px;
+	line-height: 65px;
+	margin-left: -3px;
+	padding-bottom: 5px;
+	max-height: 99999px;
+}
+h2 {
+	font-size: 28px;
+	line-height: 50px;
+	margin-left: -1px;
+	padding: 30px 0 0;
+	max-height: 99999px;
+}
+h3 {
+	font-size: 18px;
+	line-height: 38px;
+	padding: 10px 0 2px;
+	max-height: 99999px;
+}
+h2 + h3 {
+	padding-top: 0;
+	margin-top: -5px;
+}
+p {
+	padding-bottom: 10px;
+	max-height: 99999px;
+}
+ul {
+	padding-bottom: 5px;
+	list-style-type: none;
+	padding-left: 0;
+}
+li {
+	padding-bottom: 5px;
+	max-height: 99999px;
+}
+li:before {
+	position: absolute;
+	content: "—";
+	margin: 0 0 0 -20px;
+	color: #ccc;
+}
+mark {
+	position: relative;
+	padding: 2px 0 3px;
+	border-radius: 2px;
+	background: #ff9;
+	color: #86503c;
+}
+mark:before,
+mark:after {
+	position: absolute;
+	top: 0;
+	left: -5px;
+	bottom: 0;
+	width: 5px;
+	background: #ff9;
+	content: "";
+	z-index: -1;
+	border-radius: 3px 0 0 3px;
+}
+mark:after {
+	left: auto;
+	right: -5px;
+	border-radius: 0 3px 3px 0;
+}
+code {
+	font: 12px "Courier New", Courier, monospace;
+	color: #86503c;
+	white-space: nowrap;
+}
+em {
+	font-style: italic;
+}
+a,
+.dashed,
+.cartonbox {
+	color: #03709a;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(3, 112, 154, 0.3);
+	cursor: pointer;
+}
+a:hover,
+.dashed:hover,
+.cartonbox:hover {
+	color: #a00;
+	border-bottom-color: rgba(170, 0, 0, 0.3);
+}
+.dashed,
+.cartonbox {
+	border-bottom-style: dashed;
+}
+/* Content */
+.wrapper {
+	width: 680px;
+	padding: 40px 40px 0;
+	margin: auto;
+}
+.lang {
+	float: right;
+	margin-top: 9px;
+}
+.feedback {
+	background: #f0f0f0;
+	position: relative;
+	margin: 45px 0 0;
+	padding: 10px 0 45px;
+}
+.feedback:before,
+.feedback:after {
+	position: absolute;
+	content: "";
+	top: 0;
+	bottom: 0;
+	left: -3000px;
+	width: 3000px;
+	background: #f0f0f0;
+}
+.feedback:after {
+	left: auto;
+	right: -3000px;
+}
+.likely {
+	height: 22px;
+	margin: 40px -5px 10px;
+}
+.code {
+	padding-bottom: 10px;
+	counter-reset: code;
+}
+.code code {
+	display: block;
+	padding-bottom: 4px;
+	line-height: 21px;
+}
+.code code:before {
+	position: absolute;
+	margin: 0 0 0 -108px;
+	width: 100px;
+	color: #bbb;
+	text-align: right;
+	counter-increment: code;
+	content: counter(code, decimal-leading-zero) ".";
+}
+.photo {
+	padding: 5px 0 15px;
+}
+.photo a {
+	border: 0;
+	display: block;
+	margin-right: 5px;
+	float: left;
+	line-height: 0;
+}
+.gray {
+	color: #999;
+}
+/* CartonBox Custom */
+.cartonbox-body {
+	-webkit-transition: -webkit-filter 0.2s;
+	-webkit-transition: -webkit-filter 0.2s;
+	        transition: -webkit-filter 0.2s;
+	        transition:         filter 0.2s;
+	        transition:         filter 0.2s, -webkit-filter 0.2s;
+	overflow-x: hidden;
+}
+.cartonbox-go {
+	-webkit-filter: blur(1px);
+	        filter: blur(1px);
+}
+.earth .cartonbox-container {
+	background: #000 url(../img/pic-1.jpg) repeat;
+	color: #fff;
+	box-shadow: 0 0 30px #000;
+	border-radius: 5px;
+}
+.video16x9 iframe {
+	height: 348px !important;
+}
+.video21x9 iframe {
+	height: 265px !important;
+}
+.cartonbox-content h2 {
+	padding: 0;
+	margin-top: -10px;
+}
+.cartonbox-nav-dotted li:before {
+	display: none;
+}
+.cartonbox-up .cartonbox-wrap {
+	-webkit-transition: -webkit-transform 0.2s;
+	-webkit-transition: -webkit-transform 0.2s;
+	        transition: -webkit-transform 0.2s;
+	        transition:         transform 0.2s;
+	        transition:         transform 0.2s, -webkit-transform 0.2s;
+	-webkit-transform: translate3d(0, -200px, 0);
+	        transform: translate3d(0, -200px, 0);
+}
+.cartonbox-up .cartonbox-close,
+.cartonbox-up .cartonbox-prev,
+.cartonbox-up .cartonbox-next,
+.cartonbox-up .cartonbox-nav,
+.cartonbox-zoom-start .cartonbox-close,
+.cartonbox-zoom-start .cartonbox-prev,
+.cartonbox-zoom-start .cartonbox-next,
+.cartonbox-zoom-start .cartonbox-nav {
+	opacity: 0;
+}
+.cartonbox-zoom-start .cartonbox-wrap {
+	-webkit-transition: -webkit-transform 0.2s;
+	-webkit-transition: -webkit-transform 0.2s;
+	        transition: -webkit-transform 0.2s;
+	        transition:         transform 0.2s;
+	        transition:         transform 0.2s, -webkit-transform 0.2s;
+	-webkit-transform: scale3d(0.8, 0.8, 1);
+	        transform: scale3d(0.8, 0.8, 1);
+}
+.cartonbox-zoom-finish .cartonbox-wrap {
+	-webkit-transform: scale3d(1, 1, 1);
+	        transform: scale3d(1, 1, 1);
+}
+/* Other */
+.cf:before,
+.cf:after {
+	content: "";
+	display: table;
+}
+.cf:after {
+	clear: both;
+}

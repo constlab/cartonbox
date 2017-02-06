@@ -1,5 +1,6 @@
-$(function() {
-	
+(function($) {
+	'use strict';
+
 	// Settings
 	var options = {
 		onStartBefore: function() {
@@ -20,8 +21,7 @@ $(function() {
 			$('body').removeClass('cartonbox-up');
 		}
 	}
-	
+
 	// Initialization
 	$.cartonbox(options);
-	
 })(jQuery);

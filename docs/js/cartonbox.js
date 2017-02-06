@@ -1,10 +1,12 @@
-/*
- * CartonBox 1.5.3 by Const Lab, cartonbox.constlab.com
+/*!
+ * Cartonbox v1.5.3 by Maxim Sofronov <imaxsof@gmail.com>
+ * Correct modal windows
+ * Demo: https://constlab.github.io/cartonbox/
+ * License: MIT
  */
 
 (function($) {
-
-	"use strict";
+	'use strict';
 
 	// Методы
 	var methods = {
@@ -526,5 +528,4 @@
 		else if (typeof method == 'object' || !method) return methods.init.apply(this, arguments);
 		else $.error('Method ' + method + ' not found!');
 	};
-
 })(jQuery);

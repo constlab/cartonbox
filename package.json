@@ -1,4 +1,47 @@
 {
   "name": "cartonbox",
-  "version": "1.5.3"
+  "version": "1.5.3",
+  "title": "Cartonbox",
+  "description": "Correct modal windows",
+  "homepage": "https://constlab.github.io/cartonbox/",
+  "author": "Maxim Sofronov <imaxsof@gmail.com>",
+  "contributors": [
+    {
+      "name": "Ivan Kalinichenko"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/constlab/cartonbox.git"
+  },
+  "keywords": [
+    "modal",
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "bugs": {
+    "url": "https://github.com/constlab/cartonbox/issues"
+  },
+  "dependencies": {
+    "ilyabirman-likely": "^2.2.1",
+    "jquery": "^2.1.4",
+    "normalize.css": "^5.0.0"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-csscomb": "^3.0.8",
+    "gulp-csso": "^2.0.0",
+    "gulp-header": "^1.8.8",
+    "gulp-less": "^3.3.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-wrap": "^0.13.0",
+    "multipipe": "^1.0.2"
+  }
 }
