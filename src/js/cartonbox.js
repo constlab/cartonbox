@@ -207,6 +207,13 @@
 				// Переключаем на нужную позицию в навигации
 				if ($('.cartonbox-nav-dotted').length) $('.cartonbox-nav-dotted li').removeClass('active').eq(cbThis.attr('data-cb-group-index')).addClass('active');
 
+				// Возвращаем содержимое на место если оно было вырезано
+				if ($('.cartonbox-mark').length) {
+					var mark = $('.cartonbox-mark').attr('data-cb-mark');
+					$('.cartonbox-content').find(mark).prependTo('.cartonbox-mark');
+					$('.cartonbox-mark').children().unwrap();
+				}
+
 				// Чистим лишнее
 				$('.cartonbox-content').hide().html('');
 				$('.cartonbox-wrap').removeAttr('class data-cb-options').addClass('cartonbox-wrap');
@@ -241,7 +248,8 @@
 				// Inline
 				if (cbType == 'inline') {
 					if ($(cbHref).length) {
-						$(cbHref).clone(true).prependTo('.cartonbox-content');
+						$(cbHref).wrap('<div class="cartonbox-mark" data-cb-mark="' + cbHref + '"></div>');
+						$(cbHref).prependTo('.cartonbox-content');
 						$('.cartonbox-wrap').addClass('cartonbox-inline');
 						if (settings.preload) cbFuncPreload(cbThis);
 						else cbFuncEndLoad(cbThis);
@@ -360,7 +368,8 @@
 					var cbCaptionHash = /^#[\w-]+$/.test(cbCaption);
 					if (cbCaptionHash && $(cbCaption).length) {
 						$('<div class="cartonbox-caption"><div class="cartonbox-caption-text"></div></div>').appendTo('.cartonbox-content');
-						$(cbCaption).clone(true).prependTo('.cartonbox-caption-text');
+						$(cbCaption).wrap('<div class="cartonbox-mark" data-cb-mark="' + cbCaption + '"></div>');
+						$(cbCaption).prependTo('.cartonbox-caption-text');
 					} else $('<div class="cartonbox-caption"><div class="cartonbox-caption-text">' + cbCaption + '</div></div>').appendTo('.cartonbox-content');
 				}
 
@@ -446,6 +455,13 @@
 				// Скрываем модальное окно
 				$('.cartonbox-wrap').fadeOut(settings.speed, function() {
 					$('.cartonbox-nav').hide();
+
+					// Возвращаем содержимое на место если оно было вырезано
+					if ($('.cartonbox-mark').length) {
+						var mark = $('.cartonbox-mark').attr('data-cb-mark');
+						$('.cartonbox-content').find(mark).prependTo('.cartonbox-mark');
+						$('.cartonbox-mark').children().unwrap();
+					}
 
 					// Удаляем все из контентной части
 					$('.cartonbox-wrap').removeAttr('class data-cb-options').addClass('cartonbox-wrap');
