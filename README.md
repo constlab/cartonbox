@@ -18,6 +18,12 @@
 <link href="cartonbox.min.css" rel="stylesheet">
 ```
 
+Либо через npm:
+
+```
+$ npm install cartonbox --save
+```
+
 Добавляем к ссылке класс `.cartonbox` и, если это ссылка на картинку, параметр `data-cb-type="img"`:
 
 ```
